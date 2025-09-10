@@ -13,6 +13,6 @@ class docs extends Model
 
     public function intern()
     {
-        return $this->belongsTo(intern::class, 'admin_id', 'id');
+        return $this->belongsTo(intern::class, 'intern_id', 'id');
     }
 }

@@ -50,6 +50,6 @@ class User extends Authenticatable
 
     public function intern()
     {
-        return $this->hasOne(intern::class);
+        return $this->hasOne(intern::class, 'user_id', 'id');
     }
 }
