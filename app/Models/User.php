@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\admin;
 use App\Models\intern;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -51,5 +52,10 @@ class User extends Authenticatable
     public function intern()
     {
         return $this->hasOne(intern::class, 'user_id', 'id');
+    }
+
+    public function admin()
+    {
+        return $this->hasOne(admin::class, 'user_id', 'id');
     }
 }

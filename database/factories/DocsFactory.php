@@ -17,7 +17,9 @@ class DocsFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'transcript' => $this->faker->link(),
+            'application_letter' => $this->faker->link(),
+            'cv' => $this->faker->link(),
         ];
     }
 }

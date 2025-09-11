@@ -17,7 +17,8 @@ class AdminFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'fullname' => $this->faker->name(),
+            'nip' => $this->faker->numerify('##########'),
         ];
     }
 }

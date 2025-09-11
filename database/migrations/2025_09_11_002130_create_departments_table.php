@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('docs', function (Blueprint $table) {
+        Schema::create('departments', function (Blueprint $table) {
             $table->id();
-            $table->string('transcript')->nullable();
-            $table->string('application_letter')->nullable(false);
-            $table->string('cv')->nullable();
-            $table->foreignId('intern_id')->constrained('interns')->onDelete('cascade');
+            $table->string('name')->nullable();
+            $table->string('desc')->nullable();
+            $table->foreignId('admin_id')->constrained('admins');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('docs');
+        Schema::dropIfExists('departments');
     }
 };
