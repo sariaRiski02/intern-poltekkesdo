@@ -20,7 +20,7 @@ class AdminFactory extends Factory
         $user = User::factory()->create();
         return [
             'fullname' => $this->faker->name(),
-            'nip' => $this->faker->numerify('##########'),
+            'nip' => $this->faker->unique()->numerify('##########'),
             'user_id' => $user->id,
         ];
     }

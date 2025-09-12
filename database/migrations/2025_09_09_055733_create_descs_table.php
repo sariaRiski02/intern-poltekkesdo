@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable(true);
             $table->text('announcement')->nullable(true);
-            $table->string('nip')->nullable(true);
             $table->foreignId('admin_id')->constrained("admins")->onDelete('cascade');
             $table->timestamps();
         });
