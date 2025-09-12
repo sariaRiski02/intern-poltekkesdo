@@ -11,6 +11,9 @@ class docs extends Model
     /** @use HasFactory<\Database\Factories\DocsFactory> */
     use HasFactory;
 
+    protected $guarded = [
+        'id'
+    ];
     public function intern()
     {
         return $this->belongsTo(intern::class, 'intern_id', 'id');

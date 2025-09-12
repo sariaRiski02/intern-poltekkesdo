@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -27,6 +28,7 @@ class InternFactory extends Factory
             'date_end' => $this->faker->date(),
             'date' => $this->faker->date(),
             'status' => $this->faker->randomElement(['pending', 'rejected', 'accepted', 'completed']),
+            'user_id' => User::factory()->create()->id,
         ];
     }
 }

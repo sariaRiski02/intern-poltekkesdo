@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\intern;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,9 +18,10 @@ class DocsFactory extends Factory
     public function definition(): array
     {
         return [
-            'transcript' => $this->faker->link(),
-            'application_letter' => $this->faker->link(),
-            'cv' => $this->faker->link(),
+            'transcript' => $this->faker->unique()->md5 . '.pdf',
+            'application_letter' => $this->faker->unique()->md5 . '.pdf',
+            'cv' => $this->faker->unique()->md5 . '.pdf',
+            'intern_id' => intern::factory()->create()->id,
         ];
     }
 }

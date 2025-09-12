@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,9 +17,11 @@ class AdminFactory extends Factory
      */
     public function definition(): array
     {
+        $user = User::factory()->create();
         return [
             'fullname' => $this->faker->name(),
             'nip' => $this->faker->numerify('##########'),
+            'user_id' => $user->id,
         ];
     }
 }

@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\admin;
+use App\Models\department;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,8 +21,8 @@ class DescFactory extends Factory
         return [
             'title' => $this->faker->word(),
             'announcement' => $this->faker->sentence(),
-
-
+            'admin_id' => admin::factory()->create()->id,
+            'department_id' => department::factory()->create()->id,
         ];
     }
 }
