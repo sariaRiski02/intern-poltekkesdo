@@ -2,17 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\desc;
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 
-class DescSeeder extends Seeder
+class RequirmentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        desc::factory(5)->create();
+        //
     }
 }

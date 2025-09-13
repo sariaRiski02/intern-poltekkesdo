@@ -19,6 +19,7 @@ class DepartmentFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
+            'head_desc' => $this->faker->sentence(6),
             'desc' => $this->faker->sentence(),
             'admin_id' => admin::factory()->create()->id,
         ];
