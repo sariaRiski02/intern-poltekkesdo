@@ -1,44 +1,11 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @vite('resources/css/app.css')
-    <title>Magang Poltekkes Manado</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  </head>
-  <body class="bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 min-h-screen">
-
-    <!-- Navigation -->
-    <nav class="bg-white/95 backdrop-blur-sm border-b border-emerald-100 sticky top-0 z-50 shadow-sm">
-      <div class="container mx-auto px-6 py-4">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-4">
-            <div class="relative">
-              <img src="/images/logo.png" alt="Logo Kemenkes" class="h-12 w-12 object-contain" />
-              <div class="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-blue-400 rounded-full blur opacity-25"></div>
-            </div>
-            <div>
-              <h1 class="font-bold text-xl text-emerald-800">Poltekkes Manado</h1>
-              <p class="text-xs text-blue-600 font-medium">Kementerian Kesehatan RI</p>
-            </div>
-          </div>
-          <div class="hidden md:flex items-center gap-6">
+@extends('layouts.app')
 
 
-            <a href="#tentang" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Tentang</a>
-            <a href="#kontak" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Kontak</a>
+@section('content')
 
-            <a href="/" class="bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-bold px-4 py-2 rounded-lg shadow hover:from-emerald-600 hover:to-blue-600 transition-all border-2 border-emerald-700 hover:border-blue-700">
-                Kembali
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
 
-    <!-- Header Title -->
+
+<!-- Header Title -->
     <section class="py-12">
       <div class="container mx-auto px-6 text-center">
         <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent pb-3">
@@ -48,7 +15,9 @@
       </div>
     </section>
 
-    <!-- Lowongan Section -->
+
+
+<!-- Lowongan Section -->
     <section id="lowongan" class="py-16">
       <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -276,60 +245,4 @@
             </button>
           </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-white py-12">
-      <div class="container mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <!-- Logo & Description -->
-          <div class="md:col-span-2">
-            <div class="flex items-center gap-3 mb-4">
-              <img src="/images/logo.png" alt="Logo" class="h-10 w-10 object-contain" />
-              <div>
-                <h3 class="font-bold text-xl">Poltekkes Manado</h3>
-                <p class="text-sm text-slate-400">Kementerian Kesehatan RI</p>
-              </div>
-            </div>
-            <p class="text-slate-300 max-w-md">Program magang terbaik di bidang kesehatan dengan fasilitas modern dan bimbingan profesional.</p>
-          </div>
-
-          <!-- Quick Links -->
-          <div>
-            <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
-            <ul class="space-y-2 text-slate-300">
-              <li><a href="#beranda" class="hover:text-emerald-400 transition-colors">Beranda</a></li>
-              <li><a href="#lowongan" class="hover:text-emerald-400 transition-colors">Lowongan</a></li>
-              <li><a href="#tentang" class="hover:text-emerald-400 transition-colors">Tentang</a></li>
-              <li><a href="#kontak" class="hover:text-emerald-400 transition-colors">Kontak</a></li>
-            </ul>
-          </div>
-
-          <!-- Contact Info -->
-          <div>
-            <h4 class="font-semibold text-lg mb-4">Kontak</h4>
-            <ul class="space-y-2 text-slate-300">
-              <li>info@poltekkes-manado.ac.id</li>
-              <li>@poltekkesmanado</li>
-              <li>+62 431 123456</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="border-t border-slate-700 pt-8 text-center">
-          <p class="text-slate-400">&copy; 2025 Poltekkes Manado - Kementerian Kesehatan RI. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
-
-    @livewireScripts
-
-    <script>
-      AOS.init({
-        duration: 800,
-        easing: 'ease-out-cubic',
-        once: true,
-        offset: 100
-      });
-    </script>
-  </body>
-</html>
+@endsection
