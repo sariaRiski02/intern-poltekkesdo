@@ -1,25 +1,28 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/detail', function () {
+    return view('pages.detail');
+})->name('detail');
+
 
 Route::get('/tentang', function () {
-    return  view('about');
+    return  view('pages.about');
 })->name('about');
 
 Route::get('/kontak', function () {
-    return view('contact');
+    return view('pages.contact');
 })->name('contact');
 
 Route::get('/login', function () {
-    return view('login');
+    return view('pages.login');
 })->name('login');
 
 Route::get('/register', function () {
-    return view('register');
+    return view('pages.register');
 })->name('register');
 
 Route::get('/admin', function () {

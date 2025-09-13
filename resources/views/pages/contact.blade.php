@@ -83,7 +83,7 @@
               </svg>
             </div>
             <h4 class="font-bold text-slate-800 text-sm">Instagram</h4>
-            <p class="text-xs text-slate-600 mt-1">@poltekkesmanado</p>
+            <p class="text-xs text-slate-600 mt-1 flex justify-center items-center">@poltekkesmanado</p>
           </a>
 
           <!-- Facebook -->
@@ -116,7 +116,7 @@
               </svg>
             </div>
             <h4 class="font-bold text-slate-800 text-sm">Twitter</h4>
-            <p class="text-xs text-slate-600 mt-1">@poltekkesmanado</p>
+            <p class="text-xs text-slate-600 mt-1 flex justify-center items-center">@poltekkesmanado</p>
           </a>
 
           <!-- TikTok -->
@@ -127,7 +127,7 @@
               </svg>
             </div>
             <h4 class="font-bold text-slate-800 text-sm">TikTok</h4>
-            <p class="text-xs text-slate-600 mt-1">@poltekkesmanado</p>
+            <p class="text-xs text-slate-600 mt-1 flex justify-center items-center">@poltekkesmanado</p>
           </a>
 
           <!-- WhatsApp -->
@@ -143,21 +143,7 @@
         </div>
       </div>
 
-      <!-- CTA Section -->
-      <div class="bg-gradient-to-r from-emerald-600 to-blue-600 rounded-2xl p-8 md:p-12 text-white text-center shadow-xl">
-        <h3 class="text-3xl font-bold mb-4">Siap Bergabung?</h3>
-        <p class="text-emerald-100 text-lg mb-6 max-w-2xl mx-auto">
-          Jangan lewatkan kesempatan emas untuk memulai karier di bidang kesehatan. Hubungi kami sekarang!
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="mailto:info@poltekkes-manado.ac.id" class="bg-white text-emerald-600 hover:text-emerald-700 px-6 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-            Kirim Email
-          </a>
-          <a href="https://wa.me/6243112345678" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-            Chat WhatsApp
-          </a>
-        </div>
-      </div>
+
     </div>
   </div>
 </section>

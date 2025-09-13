@@ -18,10 +18,10 @@
           <div>
             <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
             <ul class="space-y-2 text-slate-300">
-              <li><a href="#beranda" class="hover:text-emerald-400 transition-colors">Beranda</a></li>
-              <li><a href="#lowongan" class="hover:text-emerald-400 transition-colors">Lowongan</a></li>
-              <li><a href="#tentang" class="hover:text-emerald-400 transition-colors">Tentang</a></li>
-              <li><a href="#kontak" class="hover:text-emerald-400 transition-colors">Kontak</a></li>
+              <li><a href="{{route('home')}}" class="hover:text-emerald-400 transition-colors">Beranda</a></li>
+              <li><a href="{{ route('about') }}" class="hover:text-emerald-400 transition-colors">Lowongan</a></li>
+
+              <li><a href="{{ route('contact') }}" class="hover:text-emerald-400 transition-colors">Kontak</a></li>
             </ul>
           </div>
 
@@ -37,7 +37,7 @@
         </div>
 
         <div class="border-t border-slate-700 pt-8 text-center">
-          <p class="text-slate-400">&copy; 2025 Poltekkes Manado - Kementerian Kesehatan RI. All rights reserved.</p>
+          <p class="text-slate-400">&copy; created by intern-student</p>
         </div>
       </div>
     </footer>
