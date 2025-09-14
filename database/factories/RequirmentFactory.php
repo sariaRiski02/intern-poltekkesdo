@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\department;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,6 +17,9 @@ class RequirmentFactory extends Factory
      */
     public function definition(): array
     {
-        return [];
+        return [
+            'name' => $this->faker->word(),
+            'department_id' => department::inRandomOrder()->first()->id,
+        ];
     }
 }
