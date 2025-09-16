@@ -14,10 +14,6 @@ Route::get('/pengumuman', function () {
     return view('pages.announcement');
 })->name('announcement');
 
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-});
-
 Route::get('/tentang', function () {
     return  view('pages.about');
 })->name('about');
@@ -34,6 +30,5 @@ Route::get('/register', function () {
     return view('pages.register');
 })->name('register');
 
-Route::get('/admin', function () {
-    return view('testAdmin');
-});
+
+require_once __DIR__ . '/admin/admin.php';
