@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\department;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('pages.home');
+        $departments = department::all();
+        return view('pages.home', compact('departments'));
+    }
+
+    public function detail(department $department)
+    {
+
+        return view('pages.detail', compact('department'));
     }
 }

@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
-
 @section('content')
+@php
+use Illuminate\Support\Str;
+@endphp
 
 
 
@@ -15,41 +17,35 @@
       </div>
     </section>
 
-    {{-- @include('empty-intern') --}}
+    {{-- @include('pages.empty-intern') --}}
 
 
 <!-- Lowongan Section -->
     <section id="lowongan" class="py-16">
       <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          <!-- Card 1 - Administrasi -->
-          <div class="group bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl p-6 border border-emerald-100 hover:border-emerald-200 transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
-            <div class="mb-4">
-              <div class="w-12 h-12 bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
-                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
 
+            @foreach ($departments as $department)
+            <!-- Card 1 - Administrasi -->
+            <div class="group bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl p-6 border border-emerald-100 hover:border-emerald-200 transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+              <div class="mb-4">
+                <div class="w-12 h-12 bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+
+                </div>
+                <h3 class="text-lg font-bold text-emerald-700 mb-2">{{ $department->name }}</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4">{{ Str::words($department->head_desc, 6, '...') }}</p>
               </div>
-              <h3 class="text-lg font-bold text-emerald-700 mb-2">Administrasi</h3>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">Sistem administrasi modern dengan teknologi terintegrasi.</p>
+
+
+              <a href="{{ route('detail', $department->slug) }}" class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white px-4 py-3 rounded-xl font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105 text-center block">
+                  Daftar Sekarang
+              </a>
             </div>
 
-            <div class="space-y-2 mb-6">
-              <div class="flex items-center gap-2 text-xs">
-                <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
-                <span class="text-slate-600">3-6 bulan</span>
-              </div>
-              <div class="flex items-center gap-2 text-xs">
-                <div class="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
-                <span class="text-slate-600">Sertifikat resmi</span>
-              </div>
-            </div>
-
-            <a href="{{ route('detail') }}" class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white px-4 py-3 rounded-xl font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105 text-center block">
-                Daftar Sekarang
-            </a>
-          </div>
+            @endforeach
 
           <!-- Card 2 - Laboratorium -->
           <div class="group bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl p-6 border border-blue-100 hover:border-blue-200 transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
@@ -63,16 +59,6 @@
               <p class="text-slate-600 text-sm leading-relaxed mb-4">Praktik langsung dengan peralatan canggih dan mentor ahli.</p>
             </div>
 
-            <div class="space-y-2 mb-6">
-              <div class="flex items-center gap-2 text-xs">
-                <div class="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
-                <span class="text-slate-600">4-6 bulan</span>
-              </div>
-              <div class="flex items-center gap-2 text-xs">
-                <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
-                <span class="text-slate-600">Lab modern</span>
-              </div>
-            </div>
 
             <button class="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-4 py-3 rounded-xl font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
               Daftar Sekarang
@@ -91,16 +77,6 @@
               <p class="text-slate-600 text-sm leading-relaxed mb-4">Sistem informasi kesehatan dengan teknologi terdepan.</p>
             </div>
 
-            <div class="space-y-2 mb-6">
-              <div class="flex items-center gap-2 text-xs">
-                <div class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
-                <span class="text-slate-600">3-6 bulan</span>
-              </div>
-              <div class="flex items-center gap-2 text-xs">
-                <div class="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
-                <span class="text-slate-600">Project nyata</span>
-              </div>
-            </div>
 
             <button class="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white px-4 py-3 rounded-xl font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
               Daftar Sekarang
@@ -119,16 +95,6 @@
               <p class="text-slate-600 text-sm leading-relaxed mb-4">Praktik keperawatan dengan standar internasional.</p>
             </div>
 
-            <div class="space-y-2 mb-6">
-              <div class="flex items-center gap-2 text-xs">
-                <div class="w-1.5 h-1.5 bg-pink-400 rounded-full"></div>
-                <span class="text-slate-600">6 bulan</span>
-              </div>
-              <div class="flex items-center gap-2 text-xs">
-                <div class="w-1.5 h-1.5 bg-rose-400 rounded-full"></div>
-                <span class="text-slate-600">Sertifikat profesi</span>
-              </div>
-            </div>
 
             <button class="w-full bg-gradient-to-r from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700 text-white px-4 py-3 rounded-xl font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
               Daftar Sekarang
@@ -147,16 +113,6 @@
               <p class="text-slate-600 text-sm leading-relaxed mb-4">Praktik farmasi klinis dan industri farmasi.</p>
             </div>
 
-            <div class="space-y-2 mb-6">
-              <div class="flex items-center gap-2 text-xs">
-                <div class="w-1.5 h-1.5 bg-purple-400 rounded-full"></div>
-                <span class="text-slate-600">4-5 bulan</span>
-              </div>
-              <div class="flex items-center gap-2 text-xs">
-                <div class="w-1.5 h-1.5 bg-indigo-400 rounded-full"></div>
-                <span class="text-slate-600">Apotek partner</span>
-              </div>
-            </div>
 
             <button class="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white px-4 py-3 rounded-xl font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
               Daftar Sekarang
@@ -175,16 +131,6 @@
               <p class="text-slate-600 text-sm leading-relaxed mb-4">Program gizi dan nutrisi untuk kesehatan masyarakat.</p>
             </div>
 
-            <div class="space-y-2 mb-6">
-              <div class="flex items-center gap-2 text-xs">
-                <div class="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
-                <span class="text-slate-600">3-4 bulan</span>
-              </div>
-              <div class="flex items-center gap-2 text-xs">
-                <div class="w-1.5 h-1.5 bg-yellow-400 rounded-full"></div>
-                <span class="text-slate-600">Konsultasi gizi</span>
-              </div>
-            </div>
 
             <button class="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-4 py-3 rounded-xl font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
               Daftar Sekarang
@@ -203,16 +149,6 @@
               <p class="text-slate-600 text-sm leading-relaxed mb-4">Teknologi pencitraan medis dan diagnostik.</p>
             </div>
 
-            <div class="space-y-2 mb-6">
-              <div class="flex items-center gap-2 text-xs">
-                <div class="w-1.5 h-1.5 bg-teal-400 rounded-full"></div>
-                <span class="text-slate-600">4-6 bulan</span>
-              </div>
-              <div class="flex items-center gap-2 text-xs">
-                <div class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></div>
-                <span class="text-slate-600">Alat canggih</span>
-              </div>
-            </div>
 
             <button class="w-full bg-gradient-to-r from-teal-500 to-teal-600 hover:from-teal-600 hover:to-teal-700 text-white px-4 py-3 rounded-xl font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
               Daftar Sekarang
@@ -231,16 +167,6 @@
               <p class="text-slate-600 text-sm leading-relaxed mb-4">Pelayanan kesehatan ibu dan anak profesional.</p>
             </div>
 
-            <div class="space-y-2 mb-6">
-              <div class="flex items-center gap-2 text-xs">
-                <div class="w-1.5 h-1.5 bg-rose-400 rounded-full"></div>
-                <span class="text-slate-600">6 bulan</span>
-              </div>
-              <div class="flex items-center gap-2 text-xs">
-                <div class="w-1.5 h-1.5 bg-pink-400 rounded-full"></div>
-                <span class="text-slate-600">Praktik klinis</span>
-              </div>
-            </div>
 
             <button class="w-full bg-gradient-to-r from-rose-500 to-pink-600 hover:from-rose-600 hover:to-pink-700 text-white px-4 py-3 rounded-xl font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105">
               Daftar Sekarang

@@ -19,9 +19,23 @@
             <a href="{{ route('about') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Tentang</a>
             <a href="{{ route('contact') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Kontak</a>
 
-            <a href="{{ route('login') }}" class="bg-gradient-to-r from-blue-500 to-emerald-500 text-white font-bold px-4 py-2 rounded-lg shadow hover:from-blue-600 hover:to-emerald-600 transition-all border-2 border-blue-600 hover:border-emerald-600">
-                Login
-            </a>
+            {{-- @guest --}}
+              <a href="{{ route('login') }}" class="bg-gradient-to-r from-blue-500 to-emerald-500 text-white font-bold px-4 py-2 rounded-lg shadow hover:from-blue-600 hover:to-emerald-600 transition-all border-2 border-blue-600 hover:border-emerald-600">
+                  Login
+              </a>
+            {{-- @endguest --}}
+
+            {{-- @auth --}}
+              <div class="flex items-center gap-3">
+                <span class="text-emerald-700 font-medium"></span>
+                <form action="" method="POST" class="inline">
+                  @csrf
+                  <button type="submit" class="cursor-pointer bg-gradient-to-r from-red-500 to-rose-500 text-white font-bold px-4 py-2 rounded-lg shadow hover:from-red-600 hover:to-rose-600 transition-all border-2 border-red-600 hover:border-rose-600">
+                      Logout
+                  </button>
+                </form>
+              </div>
+            {{-- @endauth --}}
           </div>
 
           <!-- Mobile Hamburger Menu -->
@@ -44,9 +58,23 @@
             <a href="{{ route('about') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors py-2 px-4 rounded-lg hover:bg-emerald-50">Tentang</a>
             <a href="{{ route('contact') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors py-2 px-4 rounded-lg hover:bg-emerald-50">Kontak</a>
 
-            <a href="{{ route('login') }}" class="bg-gradient-to-r from-blue-500 to-emerald-500 text-white font-bold px-4 py-2 rounded-lg shadow hover:from-blue-600 hover:to-emerald-600 transition-all border-2 border-blue-600 hover:border-emerald-600 text-center mt-2">
-                Login
-            </a>
+            @guest
+              <a href="{{ route('login') }}" class="bg-gradient-to-r from-blue-500 to-emerald-500 text-white font-bold px-4 py-2 rounded-lg shadow hover:from-blue-600 hover:to-emerald-600 transition-all border-2 border-blue-600 hover:border-emerald-600 text-center mt-2">
+                  Login
+              </a>
+            @endguest
+
+            @auth
+              <div class="flex flex-col gap-3 mt-2">
+                <div class="text-emerald-700 font-medium px-4 py-2">Halo, {{ Auth::user()->name }}</div>
+                <form action="{{ route('logout') }}" method="POST">
+                  @csrf
+                  <button type="submit" class="w-full bg-gradient-to-r from-red-500 to-rose-500 text-white font-bold px-4 py-2 rounded-lg shadow hover:from-red-600 hover:to-rose-600 transition-all border-2 border-red-600 hover:border-rose-600 text-center">
+                      Logout
+                  </button>
+                </form>
+              </div>
+            @endauth
           </div>
         </div>
       </div>

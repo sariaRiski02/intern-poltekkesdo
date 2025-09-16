@@ -51,10 +51,10 @@
           <!-- Content -->
           <div class="flex-1">
             <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent pb-3">
-              Program Magang Administrasi
+              {{ $department->name }}
             </h1>
             <p class="text-slate-600 text-lg mb-4">
-              Sistem administrasi modern dengan teknologi terintegrasi di lingkungan Poltekkes Manado
+              {{ $department->head_desc }}
             </p>
 
             <!-- Status & Info -->
@@ -85,14 +85,9 @@
           <h2 class="text-2xl font-bold text-slate-800 mb-6">Deskripsi Program</h2>
           <div class="prose prose-slate max-w-none">
             <p class="text-slate-600 leading-relaxed mb-4 text-base">
-              Program magang Administrasi di Poltekkes Manado memberikan kesempatan kepada mahasiswa untuk memperoleh pengalaman praktis dalam pengelolaan sistem administrasi modern dengan teknologi terintegrasi.
+              {{ $department->desc }}
             </p>
-            <p class="text-slate-600 leading-relaxed mb-4 text-base">
-              Peserta akan belajar tentang manajemen data, sistem informasi kesehatan, dokumentasi medis, dan berbagai aspek administrasi dalam lingkungan pelayanan kesehatan yang profesional.
-            </p>
-            <p class="text-slate-600 leading-relaxed text-base">
-              Program ini dirancang untuk memberikan pemahaman komprehensif tentang operasional administrasi di institusi pendidikan kesehatan terkemuka.
-            </p>
+
           </div>
         </div>
 
@@ -100,26 +95,14 @@
         <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-slate-100" data-aos="fade-up" data-aos-delay="200">
           <h2 class="text-2xl font-bold text-slate-800 mb-6">Persyaratan</h2>
           <div class="space-y-4">
-            <div class="flex items-start gap-4">
-              <div class="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
-              <span class="text-slate-600 text-base">Mahasiswa aktif jurusan Administrasi, Manajemen, atau bidang terkait</span>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
-              <span class="text-slate-600 text-base">Minimal semester 5 atau telah menyelesaikan 100 SKS</span>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
-              <span class="text-slate-600 text-base">IPK minimal 3.0</span>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
-              <span class="text-slate-600 text-base">Memiliki kemampuan dasar komputer (MS Office)</span>
-            </div>
-            <div class="flex items-start gap-4">
-              <div class="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
-              <span class="text-slate-600 text-base">Komunikasi yang baik dan dapat bekerja dalam tim</span>
-            </div>
+            @foreach ($department->requirement as $item)
+                <div class="flex items-start gap-4">
+                <div class="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0"></div>
+                <span class="text-slate-600 text-base">{{ $item->name }}</span>
+                </div>
+
+            @endforeach
+
           </div>
         </div>
 
