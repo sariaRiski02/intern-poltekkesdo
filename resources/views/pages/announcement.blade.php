@@ -12,94 +12,54 @@
   <div class="container mx-auto px-6 relative z-10">
     <!-- Header -->
     <div class="text-center mb-12" data-aos="fade-up">
-      <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent mb-4">
+      <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent pb-4">
         📋 Papan Pengumuman
       </h1>
       <p class="text-slate-600 text-lg mb-2">
         Pengumuman Penerimaan Peserta Magang Poltekkes Manado
       </p>
-      <p class="text-emerald-600 font-semibold">
-        Periode: September 2025 - Februari 2026
-      </p>
+
     </div>
 
     <!-- Announcement Cards -->
     <div class="max-w-5xl mx-auto space-y-6">
-      
+
       <!-- Announcement Header -->
       <div class="bg-gradient-to-r from-emerald-600 to-blue-600 rounded-2xl p-8 text-white shadow-xl" data-aos="fade-up">
         <div class="flex items-center justify-between flex-wrap gap-4">
           <div>
-            <h2 class="text-2xl font-bold mb-2">🎉 Selamat kepada Peserta yang Diterima!</h2>
-            <p class="text-emerald-100">Berikut adalah daftar peserta yang diterima untuk program magang</p>
+            <h2 class="text-2xl font-bold mb-2">🎉 Selamat Anda sebagai Peserta yang Diterima!</h2>
+
           </div>
-          <div class="text-right">
-            <div class="bg-white/20 rounded-lg px-4 py-2">
-              <p class="text-sm font-medium">Tanggal Pengumuman</p>
-              <p class="text-xl font-bold">16 Sep 2025</p>
-            </div>
-          </div>
+
         </div>
       </div>
 
       <!-- Department: Administrasi -->
-      <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-6 border border-emerald-100" data-aos="fade-up" data-aos-delay="100">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="w-12 h-12 bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold text-emerald-700">Departemen Administrasi</h3>
-            <p class="text-slate-600 text-sm">3 peserta diterima</p>
-          </div>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <!-- Accepted Student 1 -->
-          <div class="bg-green-50 border border-green-200 rounded-xl p-4">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                <span class="text-green-600 font-semibold text-sm">AS</span>
-              </div>
-              <div class="flex-1">
-                <h4 class="font-semibold text-gray-900">Andi Sari</h4>
-                <p class="text-sm text-gray-600">Universitas Sam Ratulangi</p>
-                <p class="text-xs text-green-600 font-medium">✓ DITERIMA</p>
-              </div>
+    <div class="bg-white/95 backdrop-blur-lg rounded-2xl shadow-xl p-8 border border-emerald-200" data-aos="fade-up" data-aos-delay="100">
+        <div class="flex items-center gap-5 mb-6">
+            <div class="w-14 h-14 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
+                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                </svg>
             </div>
-          </div>
+            <div>
+                <h3 class="text-2xl font-bold text-emerald-700 mb-1">Departemen Administrasi</h3>
 
-          <!-- Accepted Student 2 -->
-          <div class="bg-green-50 border border-green-200 rounded-xl p-4">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                <span class="text-green-600 font-semibold text-sm">BP</span>
-              </div>
-              <div class="flex-1">
-                <h4 class="font-semibold text-gray-900">Budi Pratama</h4>
-                <p class="text-sm text-gray-600">Universitas Negeri Manado</p>
-                <p class="text-xs text-green-600 font-medium">✓ DITERIMA</p>
-              </div>
             </div>
-          </div>
 
-          <!-- Accepted Student 3 -->
-          <div class="bg-green-50 border border-green-200 rounded-xl p-4">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                <span class="text-green-600 font-semibold text-sm">CL</span>
-              </div>
-              <div class="flex-1">
-                <h4 class="font-semibold text-gray-900">Citra Lestari</h4>
-                <p class="text-sm text-gray-600">Politeknik Negeri Manado</p>
-                <p class="text-xs text-green-600 font-medium">✓ DITERIMA</p>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
+        <div class="flex flex-col items-center justify-center py-8">
+            <div class="bg-green-50 border border-green-200 rounded-2xl px-8 py-6 flex flex-col items-center shadow">
+                <svg class="w-12 h-12 text-green-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" stroke-width="2" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2l4-4"/>
+                </svg>
+                <h4 class="text-2xl font-bold text-green-700 mb-2">Selamat Anda Diterima!</h4>
+                <p class="text-green-700 text-center">Anda telah diterima sebagai peserta magang di Departemen Administrasi.<br>Silakan cek informasi penting di bawah ini untuk langkah selanjutnya.</p>
+            </div>
+        </div>
+    </div>
 
       <!-- Department: Keperawatan -->
       <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-6 border border-pink-100" data-aos="fade-up" data-aos-delay="200">
@@ -114,7 +74,7 @@
             <p class="text-slate-600 text-sm">4 peserta diterima</p>
           </div>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <!-- Accepted Students -->
           <div class="bg-green-50 border border-green-200 rounded-xl p-4">
@@ -184,7 +144,7 @@
             <p class="text-slate-600 text-sm">2 peserta diterima</p>
           </div>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="bg-green-50 border border-green-200 rounded-xl p-4">
             <div class="flex items-center gap-3">

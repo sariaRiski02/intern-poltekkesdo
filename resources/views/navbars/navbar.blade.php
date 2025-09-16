@@ -16,9 +16,9 @@
           <!-- Desktop Menu -->
           <div class="hidden md:flex items-center gap-6">
             <a href="{{ route('home') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Beranda</a>
+            <a href="{{ route('announcement') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Pengumuman</a>
             <a href="{{ route('about') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Tentang</a>
             <a href="{{ route('contact') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Kontak</a>
-            <a href="{{ route('announcement') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Pengumuman</a>
             {{-- @guest --}}
               <a href="{{ route('login') }}" class="bg-gradient-to-r from-blue-500 to-emerald-500 text-white font-bold px-4 py-2 rounded-lg shadow hover:from-blue-600 hover:to-emerald-600 transition-all border-2 border-blue-600 hover:border-emerald-600">
                   Login
@@ -57,6 +57,7 @@
             <a href="{{ route('home') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors py-2 px-4 rounded-lg hover:bg-emerald-50">Beranda</a>
             <a href="{{ route('about') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors py-2 px-4 rounded-lg hover:bg-emerald-50">Tentang</a>
             <a href="{{ route('contact') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors py-2 px-4 rounded-lg hover:bg-emerald-50">Kontak</a>
+            <a href="{{ route('announcement') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors py-2 px-4 rounded-lg hover:bg-emerald-50">Pengumuman</a>
 
             @guest
               <a href="{{ route('login') }}" class="bg-gradient-to-r from-blue-500 to-emerald-500 text-white font-bold px-4 py-2 rounded-lg shadow hover:from-blue-600 hover:to-emerald-600 transition-all border-2 border-blue-600 hover:border-emerald-600 text-center mt-2">
