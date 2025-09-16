@@ -13,6 +13,6 @@ class RequirmentSeeder extends Seeder
      */
     public function run(): void
     {
-        requirment::factory(15)->create();
+        requirment::factory(25)->create();
     }
 }

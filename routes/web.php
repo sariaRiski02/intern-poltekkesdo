@@ -6,6 +6,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/detail/{department:slug}', [HomeController::class, 'detail'])->name('detail');
 
+Route::get('/form', function () {
+    return view('pages.form');
+})->name('form');
+
+Route::get('/pengumuman', function () {
+    return view('pages.announcement');
+})->name('announcement');
+
 Route::get('/admin', function () {
     return view('admin.dashboard');
 });
