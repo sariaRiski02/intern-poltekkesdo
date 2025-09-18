@@ -13,7 +13,7 @@
     </div>
 
     <!-- Stats Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
         <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
             <p class="text-sm font-medium text-gray-500">Total Peserta</p>
             <p class="text-3xl font-bold text-gray-900">124</p>
@@ -25,6 +25,10 @@
         <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
             <p class="text-sm font-medium text-gray-500">Diterima</p>
             <p class="text-3xl font-bold text-green-600">89</p>
+        </div>
+        <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
+            <p class="text-sm font-medium text-gray-500">Ditolak</p>
+            <p class="text-3xl font-bold text-red-600">17</p>
         </div>
         <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
             <p class="text-sm font-medium text-gray-500">Selesai</p>
@@ -50,51 +54,43 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
-                    <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4">1</td>
-                        <td class="px-6 py-4 font-medium text-gray-900">
-                            John Doe<br>
-                            <span class="text-xs text-gray-500">john.doe@email.com</span>
-                        </td>
-                        <td class="px-6 py-4">Universitas Indonesia</td>
-                        <td class="px-6 py-4">Keperawatan</td>
-                        <td class="px-6 py-4">
-                            <span class="px-3 py-1 text-xs rounded-full bg-yellow-100 text-yellow-700 font-medium">Pending</span>
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="{{ route('detail-intern') }}"
-                               class="inline-flex items-center px-3 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                </svg>
-                                Lihat
-                            </a>
-                        </td>
-                    </tr>
 
-                    <tr class="hover:bg-gray-50">
-                        <td class="px-6 py-4">2</td>
-                        <td class="px-6 py-4 font-medium text-gray-900">
-                            Sarah Jane<br>
-                            <span class="text-xs text-gray-500">sarah.jane@email.com</span>
-                        </td>
-                        <td class="px-6 py-4">Universitas Gadjah Mada</td>
-                        <td class="px-6 py-4">Farmasi</td>
-                        <td class="px-6 py-4">
-                            <span class="px-3 py-1 text-xs rounded-full bg-green-100 text-green-700 font-medium">Diterima</span>
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="{{ url('/peserta/2') }}"
-                               class="inline-flex items-center px-3 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                                </svg>
-                                Lihat
-                            </a>
-                        </td>
-                    </tr>
+                    @foreach ($docs as $doc)
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4">{{ $loop->iteration }}</td>
+                            <td class="px-6 py-4 font-medium text-gray-900">
+                                {{ $doc->intern->fullname }}<br>
+                                <span class="text-xs text-gray-500">{{ $doc->intern->user->email }}</span>
+                            </td>
+                            <td class="px-6 py-4">{{ $doc->intern->university }}</td>
+                            <td class="px-6 py-4">{{ $doc->department->name }}</td>
+                            <td class="px-6 py-4">
+                                @php
+                                    $status = $doc->status;
+                                    $statusClasses = [
+                                        'pending' => 'bg-yellow-100 text-yellow-700',
+                                        'ditolak' => 'bg-red-100 text-red-700',
+                                        'diterima' => 'bg-green-100 text-green-700',
+                                        'selesai' => 'bg-purple-100 text-purple-700',
+                                    ];
+                                    $class = $statusClasses[$status] ?? 'bg-gray-100 text-gray-700';
+                                @endphp
+                                <span class="px-3 py-1 text-xs rounded-full {{ $class }} font-medium">
+                                    {{ $status }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="{{ route('detail-intern', $doc->slug) }}"
+                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                    </svg>
+                                    Lihat
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

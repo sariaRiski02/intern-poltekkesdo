@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\docs;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class department extends Model
 {
@@ -29,5 +30,10 @@ class department extends Model
     public function requirement()
     {
         return $this->hasMany(requirment::class, 'department_id', 'id');
+    }
+
+    public function docs()
+    {
+        return $this->hasMany(docs::class, 'department_id', 'id');
     }
 }

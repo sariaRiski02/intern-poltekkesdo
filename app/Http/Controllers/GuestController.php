@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\department;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class GuestController extends Controller
 {
     public function index()
     {

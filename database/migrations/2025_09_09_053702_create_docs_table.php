@@ -13,10 +13,14 @@ return new class extends Migration
     {
         Schema::create('docs', function (Blueprint $table) {
             $table->id();
+            $table->string('slug')->nullable(false)->unique();
             $table->string('transcript')->nullable();
             $table->string('application_letter')->nullable(false);
             $table->string('cv')->nullable();
-            $table->foreignId('intern_id')->constrained('interns')->onDelete('cascade');
+            $table->date('date_start')->nullable(false);
+            $table->date('date_end')->nullable(false);
+            $table->enum('status', ['pending', 'rejected', 'accepted', 'completed'])->nullable(false);
+            $table->foreignId('intern_id')->nullable()->constrained('interns')->onDelete('cascade');
             $table->timestamps();
         });
     }

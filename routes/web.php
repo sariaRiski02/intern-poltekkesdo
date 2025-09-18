@@ -1,15 +1,19 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GuestController;
+use App\Http\Controllers\InternController;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/detail/{department:slug}', [HomeController::class, 'detail'])->name('detail');
+Route::get('/', [GuestController::class, 'index'])->name('home');
+Route::get('/detail/{department:slug}', [GuestController::class, 'detail'])->name('detail');
 
-Route::get('/form', function () {
-    return view('pages.form');
-})->name('form');
+Route::get('/department/{department:slug}/form', [InternController::class, 'index'])->name('intern.form');
+Route::post('/department/{department:slug}/form', [InternController::class, 'internStore'])->name('intern.store');
 
+
+Route::get('/test', function () {
+    return view('test');
+});
 Route::get('/pengumuman', function () {
     return view('pages.announcement');
 })->name('announcement');
@@ -30,5 +34,6 @@ Route::get('/register', function () {
     return view('pages.register');
 })->name('register');
 
+Route::fallback(fn() => view('pages.empty-url'));
 
 require_once __DIR__ . '/admin/admin.php';

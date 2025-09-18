@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\admin;
+
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -26,6 +27,7 @@ class DepartmentFactory extends Factory
             'slug' => Str::slug($name),
             'desc' => $this->faker->sentence(),
             'admin_id' => admin::factory()->create()->id,
+
         ];
     }
 }

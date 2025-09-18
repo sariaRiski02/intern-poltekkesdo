@@ -1,12 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-@php
-use Illuminate\Support\Str;
-@endphp
-
-
-
 <!-- Header Title -->
     <section class="py-12">
       <div class="container mx-auto px-6 text-center">
@@ -24,7 +18,6 @@ use Illuminate\Support\Str;
     <section id="lowongan" class="py-16">
       <div class="container mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-
             @php
                 $color = ['emerald', 'blue', 'cyan', 'teal', 'lime', 'rose', 'fuchsia', 'violet'
                 ];
@@ -38,7 +31,7 @@ use Illuminate\Support\Str;
               @php
                   $selected = getRandomColor($color);
               @endphp
-              <div class="group bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl p-6 border border-{{$selected}}-100 hover:border-{{$selected}}-200 transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+              <div class="group bg-white/90 backdrop-blur-sm rounded-3xl shadow-lg hover:shadow-2xl p-6 border border-{{$selected}}-100 hover:border-{{$selected}}-300 transition-all duration-700 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
                 <div class="mb-4">
                   <div class="w-12 h-12 bg-gradient-to-r from-{{$selected}}-400 to-{{$selected}}-500 rounded-xl flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                     <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

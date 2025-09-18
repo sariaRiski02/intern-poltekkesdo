@@ -21,6 +21,7 @@ class AdminFactory extends Factory
         return [
             'fullname' => $this->faker->name(),
             'nip' => $this->faker->unique()->numerify('##########'),
+            'no_hp' => $this->faker->phoneNumber(),
             'user_id' => $user->id,
         ];
     }

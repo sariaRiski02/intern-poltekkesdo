@@ -19,11 +19,11 @@
             <a href="{{ route('announcement') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Pengumuman</a>
             <a href="{{ route('about') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Tentang</a>
             <a href="{{ route('contact') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Kontak</a>
-            {{-- @guest --}}
+            {{-- @guest
               <a href="{{ route('login') }}" class="bg-gradient-to-r from-blue-500 to-emerald-500 text-white font-bold px-4 py-2 rounded-lg shadow hover:from-blue-600 hover:to-emerald-600 transition-all border-2 border-blue-600 hover:border-emerald-600">
                   Login
               </a>
-            {{-- @endguest --}}
+            @endguest --}}
 
             {{-- @auth --}}
               <div class="flex items-center gap-3">

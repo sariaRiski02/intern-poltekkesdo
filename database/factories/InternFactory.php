@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,17 +19,16 @@ class InternFactory extends Factory
      */
     public function definition(): array
     {
+        $name = $this->faker->name();
         return [
-            'fullname' => $this->faker->name(),
+            'fullname' => $name,
+            'slug' => Str::slug($name),
             'university' => $this->faker->company(),
             'faculty' => $this->faker->word(),
             'major' => $this->faker->word(),
             'address' => $this->faker->address(),
             'no_hp' => $this->faker->phoneNumber(),
-            'date_start' => $this->faker->date(),
-            'date_end' => $this->faker->date(),
-            'date' => $this->faker->date(),
-            'status' => $this->faker->randomElement(['pending', 'rejected', 'accepted', 'completed']),
+            'birthday' => $this->faker->date(),
             'user_id' => User::factory()->create()->id,
         ];
     }

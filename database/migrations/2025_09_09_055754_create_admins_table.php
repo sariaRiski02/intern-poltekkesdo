@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->string('fullname')->nullable(true);
-            $table->string('nip')->nullable(true);
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->string('fullname');
+            $table->string('nip');
+            $table->string('no_hp');
+            $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

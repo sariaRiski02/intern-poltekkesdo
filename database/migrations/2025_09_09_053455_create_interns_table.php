@@ -14,15 +14,13 @@ return new class extends Migration
         Schema::create('interns', function (Blueprint $table) {
             $table->id();
             $table->string('fullname')->nullable(false);
+            $table->string('slug')->nullable(false)->unique();
             $table->string('university')->nullable(false);
             $table->string('faculty')->nullable(false);
             $table->string('major')->nullable(false);
             $table->string('address')->nullable(false);
             $table->string('no_hp')->nullable(false);
-            $table->date('date_start')->nullable(false);
-            $table->date('date_end')->nullable(false);
-            $table->date('date')->nullable(false);
-            $table->enum('status', ['pending', 'rejected', 'accepted', 'completed'])->nullable(false);
+            $table->date('birthday')->nullable(false);
             $table->timestamps();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
         });

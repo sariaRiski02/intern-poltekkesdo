@@ -6,71 +6,405 @@
     @vite('resources/css/app.css')
     <title>Detail Peserta Magang</title>
   </head>
-  <body class="bg-gray-50 min-h-screen">
+  <body class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 min-h-screen">
 
-    <div class="p-6 space-y-8 max-w-6xl mx-auto">
+    <div class="container mx-auto px-4 py-6 lg:py-8 space-y-6 lg:space-y-8 max-w-7xl">
       <!-- Header -->
-      <div class="flex items-center justify-between">
-        <div>
-          <h1 class="text-3xl font-bold text-gray-900">Detail Peserta Magang</h1>
-          <p class="text-gray-600 mt-1">Informasi lengkap calon peserta magang</p>
-        </div>
-        <div>
-          <span class="px-4 py-2 rounded-full text-sm font-semibold bg-yellow-100 text-yellow-700">
-            Pending
-          </span>
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 lg:p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+            <a href="javascript:history.back()" class="inline-flex items-center text-gray-600 hover:text-indigo-600 transition-colors duration-200 group w-fit">
+              <svg class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+              </svg>
+              Kembali
+            </a>
+            <div class="border-l border-gray-200 pl-3 sm:pl-4 hidden sm:block"></div>
+            <div>
+              <h1 class="text-2xl lg:text-3xl font-bold text-gray-900 tracking-tight">Detail Peserta Magang</h1>
+              <p class="text-gray-600 text-sm lg:text-base mt-1">Informasi lengkap calon peserta magang</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            @php
+                $statusConfig = [
+                    'pending' => [
+                        'color' => 'yellow',
+                        'text' => 'Menunggu Review',
+                        'bg' => 'from-yellow-100 to-amber-100',
+                        'textColor' => 'text-yellow-700',
+                        'border' => 'border-yellow-200',
+                        'dot' => 'bg-yellow-400'
+                    ],
+                    'diterima' => [
+                        'color' => 'green',
+                        'text' => 'Diterima',
+                        'bg' => 'from-green-100 to-emerald-100',
+                        'textColor' => 'text-green-700',
+                        'border' => 'border-green-200',
+                        'dot' => 'bg-green-400'
+                    ],
+                    'ditolak' => [
+                        'color' => 'red',
+                        'text' => 'Ditolak',
+                        'bg' => 'from-red-100 to-pink-100',
+                        'textColor' => 'text-red-700',
+                        'border' => 'border-red-200',
+                        'dot' => 'bg-red-400'
+                    ],
+                    'selesai' => [
+                        'color' => 'blue',
+                        'text' => 'Selesai',
+                        'bg' => 'from-blue-100 to-indigo-100',
+                        'textColor' => 'text-blue-700',
+                        'border' => 'border-blue-200',
+                        'dot' => 'bg-blue-400'
+                    ]
+                ];
+
+                $currentStatus = $statusConfig[$docs->status] ?? $statusConfig['pending'];
+            @endphp
+
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 {{ $currentStatus['dot'] }} rounded-full animate-pulse"></div>
+                <span class="px-4 py-2 rounded-full text-sm font-semibold bg-gradient-to-r {{ $currentStatus['bg'] }} {{ $currentStatus['textColor'] }} border {{ $currentStatus['border'] }}">
+                    {{ $currentStatus['text'] }}
+                </span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Content Grid -->
+      <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
         <!-- Informasi Peserta -->
-        <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow border border-gray-100 space-y-6">
-          <h2 class="text-xl font-semibold text-gray-800 border-b pb-2">Data Pribadi</h2>
-          <div class="grid grid-cols-2 gap-4 text-sm">
-            <p><span class="font-medium text-gray-600">Nama Lengkap:</span> John Doe</p>
-            <p><span class="font-medium text-gray-600">Universitas:</span> Universitas Indonesia</p>
-            <p><span class="font-medium text-gray-600">Fakultas:</span> Ilmu Kesehatan</p>
-            <p><span class="font-medium text-gray-600">Jurusan:</span> Keperawatan</p>
-            <p><span class="font-medium text-gray-600">Alamat:</span> Jl. Sudirman No. 123, Jakarta</p>
-            <p><span class="font-medium text-gray-600">No HP:</span> 08123456789</p>
+        <div class="xl:col-span-2 space-y-6">
+          <!-- Data Pribadi Card -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300">
+            <div class="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-4">
+              <h2 class="text-xl font-bold text-white flex items-center">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+            Data Pribadi
+              </h2>
+            </div>
+            <div class="p-6">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
+            <div class="space-y-3">
+              <div class="flex flex-col">
+                <span class="text-sm font-medium text-gray-500 mb-1">Nama Lengkap</span>
+                <span class="text-gray-900 font-semibold">{{ $docs->intern->fullname }}</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-sm font-medium text-gray-500 mb-1">Email</span>
+                <span class="text-gray-900 font-mono">{{ $docs->intern->user->email }}</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-sm font-medium text-gray-500 mb-1">Universitas</span>
+                <span class="text-gray-900">{{ $docs->intern->university }}</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-sm font-medium text-gray-500 mb-1">Fakultas</span>
+                <span class="text-gray-900">{{ $docs->intern->faculty }}</span>
+              </div>
+            </div>
+            <div class="space-y-3">
+              <div class="flex flex-col">
+                <span class="text-sm font-medium text-gray-500 mb-1">Jurusan</span>
+                <span class="text-gray-900">{{ $docs->intern->major }}</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-sm font-medium text-gray-500 mb-1">Department Magang</span>
+                <span class="text-gray-900">{{ $docs->department->name }}</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-sm font-medium text-gray-500 mb-1">No HP</span>
+                <span class="text-gray-900 font-mono">{{ $docs->intern->no_hp }}</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-sm font-medium text-gray-500 mb-1">Alamat</span>
+                <span class="text-gray-900">{{ $docs->intern->address }}</span>
+              </div>
+            </div>
+              </div>
+            </div>
           </div>
 
-          <h2 class="text-xl font-semibold text-gray-800 border-b pb-2 mt-6">Periode Magang</h2>
-          <div class="grid grid-cols-2 gap-4 text-sm">
-            <p><span class="font-medium text-gray-600">Tanggal Mulai:</span> 01-10-2025</p>
-            <p><span class="font-medium text-gray-600">Tanggal Selesai:</span> 31-12-2025</p>
-            <p><span class="font-medium text-gray-600">Tanggal Pengajuan:</span> 15-09-2025</p>
+          <!-- Periode Magang Card -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300">
+            <div class="bg-gradient-to-r from-emerald-500 to-teal-600 px-6 py-4">
+              <h2 class="text-xl font-bold text-white flex items-center">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 0v1a1 1 0 001 1h4a1 1 0 001-1V7m-6 0H5a2 2 0 00-2 2v8a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3"></path>
+            </svg>
+            Periode Magang
+              </h2>
+            </div>
+            <div class="p-6">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
+            <div class="text-center p-4 bg-emerald-50 rounded-xl border border-emerald-100">
+
+              <div class="text-2xl font-bold text-emerald-600">{{ $docs->date_start->format('d') }}</div>
+            <div class="text-sm text-emerald-600 font-medium">{{ $docs->date_start->format('F Y') }}</div>
+              <div class="text-xs text-gray-600 mt-1">Tanggal Mulai</div>
+            </div>
+            <div class="text-center p-4 bg-blue-50 rounded-xl border border-blue-100">
+              <div class="text-2xl font-bold text-blue-600">{{ $docs->date_end->format('d') }}</div>
+              <div class="text-sm text-blue-600 font-medium">{{ $docs->date_end->format('F Y') }}</div>
+              <div class="text-xs text-gray-600 mt-1">Tanggal Selesai</div>
+            </div>
+            <div class="text-center p-4 bg-purple-50 rounded-xl border border-purple-100">
+              <div class="text-2xl font-bold text-purple-600">{{ $docs->created_at->format('d') }}</div>
+              <div class="text-sm text-purple-600 font-medium">{{ $docs->created_at->format('F Y') }}</div>
+              <div class="text-xs text-gray-600 mt-1">Tanggal Pengajuan</div>
+            </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Dokumen -->
-        <div class="bg-white p-6 rounded-2xl shadow border border-gray-100 space-y-4">
-          <h2 class="text-xl font-semibold text-gray-800 border-b pb-2">Dokumen</h2>
-          <ul class="space-y-2 text-sm">
-            <li>
-              <span class="font-medium text-gray-600">Application Letter:</span>
-              <a href="#" class="text-blue-600 hover:underline">Lihat</a>
-            </li>
-            <li>
-              <span class="font-medium text-gray-600">CV:</span>
-              <a href="#" class="text-blue-600 hover:underline">Lihat</a>
-            </li>
-            <li>
-              <span class="font-medium text-gray-600">Transkrip Nilai:</span>
-              <a href="#" class="text-blue-600 hover:underline">Lihat</a>
-            </li>
-          </ul>
+        <!-- Dokumen & Actions -->
+        <div class="space-y-6">
+          <!-- Dokumen Card -->
+          <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300">
+            <div class="bg-gradient-to-r from-orange-500 to-red-500 px-6 py-4">
+              <h2 class="text-xl font-bold text-white flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Dokumen
+              </h2>
+            </div>
+            <div class="p-6">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100 hover:bg-gray-100 transition-colors duration-200">
+                  <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="font-medium text-gray-900">Surat Pengajuan</div>
+                      <div class="text-sm text-gray-500">PDF • 2.3 MB</div>
+                    </div>
+                  </div>
+                  <a href="{{ Storage::url($docs->application_letter) }}" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    Lihat
+                  </a>
+                </div>
+
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100 hover:bg-gray-100 transition-colors duration-200">
+                  <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                      <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="font-medium text-gray-900">Curriculum Vitae</div>
+                      <div class="text-sm text-gray-500">PDF • 1.8 MB</div>
+                    </div>
+                  </div>
+                  <a href="#" class="inline-flex items-center px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700 transition-colors duration-200">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    Lihat
+                  </a>
+                </div>
+
+                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100 hover:bg-gray-100 transition-colors duration-200">
+                  <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                      <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="font-medium text-gray-900">Transkrip Nilai</div>
+                      <div class="text-sm text-gray-500">PDF • 1.1 MB</div>
+                    </div>
+                  </div>
+                  <a href="#" class="inline-flex items-center px-4 py-2 bg-purple-600 text-white text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors duration-200">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    Lihat
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Tombol Aksi -->
-      <div class="flex space-x-4">
-        <button class="px-5 py-2 bg-yellow-100 text-yellow-700 font-medium rounded-xl hover:bg-yellow-200 transition">Pending</button>
-        <button class="px-5 py-2 bg-green-600 text-white font-medium rounded-xl hover:bg-green-700 transition">Terima</button>
-        <button class="px-5 py-2 bg-red-600 text-white font-medium rounded-xl hover:bg-red-700 transition">Tolak</button>
-        <button class="px-5 py-2 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 transition">Selesai</button>
+      <!-- Action Buttons -->
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+        <!-- Status: Menunggu Review (Default) -->
+        <div id="status-pending" class="status-section">
+          <div class="flex flex-col sm:flex-row gap-4 sm:gap-3">
+            <!-- Status Button -->
+            <div class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-yellow-100 to-amber-100 text-yellow-700 font-semibold rounded-xl border-2 border-yellow-200 cursor-default">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Status: Menunggu Review
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 flex-1 sm:justify-end">
+              <button onclick="acceptIntern()" class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold rounded-xl hover:from-green-600 hover:to-emerald-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-green-500/25">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Terima
+              </button>
+
+              <button onclick="rejectIntern()" class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-red-500 to-pink-600 text-white font-semibold rounded-xl hover:from-red-600 hover:to-pink-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-red-500/25">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+                Tolak
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status: Diterima -->
+        <div id="status-accepted" class="status-section hidden">
+          <div class="flex flex-col sm:flex-row gap-4 sm:gap-3">
+            <!-- Status Button -->
+            <div class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 font-semibold rounded-xl border-2 border-green-200 cursor-default">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              Status: Diterima
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 flex-1 sm:justify-end">
+              <button onclick="setPending()" class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-yellow-500 to-amber-600 text-white font-semibold rounded-xl hover:from-yellow-600 hover:to-amber-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-yellow-500/25">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Pending
+              </button>
+
+              <button onclick="rejectIntern()" class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-red-500 to-pink-600 text-white font-semibold rounded-xl hover:from-red-600 hover:to-pink-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-red-500/25">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+                Tolak
+              </button>
+
+              <button onclick="completeIntern()" class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-indigo-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-blue-500/25">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                </svg>
+                Selesai
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status: Ditolak -->
+        <div id="status-rejected" class="status-section hidden">
+          <div class="flex flex-col sm:flex-row gap-4 sm:gap-3">
+            <!-- Status Button -->
+            <div class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-red-100 to-pink-100 text-red-700 font-semibold rounded-xl border-2 border-red-200 cursor-default">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+              Status: Ditolak
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 flex-1 sm:justify-end">
+              <button onclick="setPending()" class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-yellow-500 to-amber-600 text-white font-semibold rounded-xl hover:from-yellow-600 hover:to-amber-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-yellow-500/25">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Pending
+              </button>
+
+              <button onclick="acceptIntern()" class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold rounded-xl hover:from-green-600 hover:to-emerald-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-green-500/25">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                Terima
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Status: Selesai -->
+        <div id="status-completed" class="status-section hidden">
+          <div class="flex flex-col sm:flex-row gap-4 sm:gap-3">
+            <!-- Status Button -->
+            <div class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 font-semibold rounded-xl border-2 border-blue-200 cursor-default">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+              </svg>
+              Status: Selesai
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 flex-1 sm:justify-end">
+              <button onclick="setPending()" class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-yellow-500 to-amber-600 text-white font-semibold rounded-xl hover:from-yellow-600 hover:to-amber-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-yellow-500/25">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                Pending
+              </button>
+
+              <button onclick="rejectIntern()" class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-red-500 to-pink-600 text-white font-semibold rounded-xl hover:from-red-600 hover:to-pink-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-red-500/25">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+                Tolak
+              </button>
+
+              <button onclick="generateCertificate()" class="flex items-center justify-center px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-purple-600 hover:to-indigo-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-purple-500/25">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Generate Sertifikat
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Additional Info -->
+        <div class="mt-4 pt-4 border-t border-gray-100">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between text-sm text-gray-500 gap-2">
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Pastikan semua dokumen telah diperiksa sebelum mengambil keputusan
+            </div>
+            <div class="flex items-center">
+              <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Diajukan pada 15 September 2025
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
+
 
   </body>
 </html>
