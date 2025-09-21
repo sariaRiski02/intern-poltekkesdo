@@ -11,9 +11,7 @@ Route::get('/department/{department:slug}/form', [InternController::class, 'inde
 Route::post('/department/{department:slug}/form', [InternController::class, 'internStore'])->name('intern.store');
 
 
-Route::get('/test', function () {
-    return view('test');
-});
+
 Route::get('/pengumuman', function () {
     return view('pages.announcement');
 })->name('announcement');

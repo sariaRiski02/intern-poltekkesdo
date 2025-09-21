@@ -33,6 +33,18 @@ class docs extends Model
 
         return $statusMap[$value] ?? Str::lower($value);
     }
+
+    public function setStatusAttribute($value)
+    {
+        $reverseStatusMap = [
+            'pending' => 'pending',
+            'ditolak' => 'rejected',
+            'diterima' => 'accepted',
+            'selesai' => 'completed',
+        ];
+
+        $this->attributes['status'] = $reverseStatusMap[$value] ?? $value;
+    }
     public function intern()
     {
         return $this->belongsTo(intern::class, 'intern_id', 'id');

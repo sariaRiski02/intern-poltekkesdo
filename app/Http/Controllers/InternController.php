@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\docs;
 use App\Models\intern;
 use App\Models\department;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Rules\IndonesianPhoneNumber;
@@ -66,22 +68,26 @@ class InternController extends Controller
 
 
         $intern = new intern();
-        $intern->user_id = optional(Auth::user())->id;
+        $intern->user_id = optional(Auth::user())->id ?? Auth::first()->id;
         $intern->fullname = $validatedData['nama_lengkap'];
+        $intern->slug = Str::slug($validatedData['nama_lengkap'] . '-' . Str::random(5));
         $intern->university = $validatedData['universitas'];
         $intern->faculty = $validatedData['fakultas'];
         $intern->major = $validatedData['jurusan'];
         $intern->address = $validatedData['alamat'];
         $intern->no_hp = $validatedData['no_hp'];
         $intern->birthday = $validatedData['tanggal_lahir'];
-        $intern->date_start = $validatedData['tanggal_mulai'];
-        $intern->date_end = $validatedData['tanggal_selesai'];
+
         $intern->save();
 
 
         $docs = new docs();
         $docs->intern_id = $intern->id;
+        $docs->slug = Str::slug($validatedData['nama_lengkap'] . '-' . Str::random(5));
+        $docs->status = 'pending';
         $docs->department_id = $department->id;
+        $docs->date_start = $validatedData['tanggal_mulai'];
+        $docs->date_end = $validatedData['tanggal_selesai'];
 
         // simpan surat pengajuan
         if ($request->hasFile('surat_pengajuan')) {

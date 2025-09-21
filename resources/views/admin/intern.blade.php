@@ -16,23 +16,23 @@
     <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
         <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
             <p class="text-sm font-medium text-gray-500">Total Peserta</p>
-            <p class="text-3xl font-bold text-gray-900">124</p>
+            <p class="text-3xl font-bold text-gray-900">{{ $CountPeserta }}</p>
         </div>
         <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
             <p class="text-sm font-medium text-gray-500">Pending</p>
-            <p class="text-3xl font-bold text-yellow-600">18</p>
+            <p class="text-3xl font-bold text-yellow-600">{{ $AllDocs->where('status', 'pending')->count() }}</p>
         </div>
         <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
             <p class="text-sm font-medium text-gray-500">Diterima</p>
-            <p class="text-3xl font-bold text-green-600">89</p>
+            <p class="text-3xl font-bold text-green-600">{{ $AllDocs->where('status', 'diterima')->count() }}</p>
         </div>
         <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
             <p class="text-sm font-medium text-gray-500">Ditolak</p>
-            <p class="text-3xl font-bold text-red-600">17</p>
+            <p class="text-3xl font-bold text-red-600">{{ $AllDocs->where('status', 'ditolak')->count() }}</p>
         </div>
         <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
             <p class="text-sm font-medium text-gray-500">Selesai</p>
-            <p class="text-3xl font-bold text-blue-600">17</p>
+            <p class="text-3xl font-bold text-blue-600">{{ $AllDocs->where('status', 'selesai')->count() }}</p>
         </div>
     </div>
 
@@ -60,7 +60,7 @@
                             <td class="px-6 py-4">{{ $loop->iteration }}</td>
                             <td class="px-6 py-4 font-medium text-gray-900">
                                 {{ $doc->intern->fullname }}<br>
-                                <span class="text-xs text-gray-500">{{ $doc->intern->user->email }}</span>
+                                <span class="text-xs text-gray-500">{{ $doc->intern->user->email ?? '' }}</span>
                             </td>
                             <td class="px-6 py-4">{{ $doc->intern->university }}</td>
                             <td class="px-6 py-4">{{ $doc->department->name }}</td>
@@ -80,7 +80,7 @@
                                 </span>
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{{ route('detail-intern', $doc->slug) }}"
+                                <a href="{{ route('admin.detail-intern', $doc->slug) }}"
                                 class="inline-flex items-center px-3 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
                                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -95,5 +95,6 @@
             </table>
         </div>
     </div>
+    {{ $docs->links() }}
 </div>
 @endsection

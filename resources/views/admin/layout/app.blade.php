@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - @yield('title', 'Poltekkesdo')</title>
     @vite('resources/css/app.css')
+
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <!-- Additional Meta Tags -->
     <meta name="description" content="Admin Dashboard Poltekkesdo - Management System">
