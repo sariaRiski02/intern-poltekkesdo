@@ -17,6 +17,12 @@ class intern extends Model
         'id',
     ];
 
+    public function getInitialsAttribute()
+    {
+        return collect(explode(' ', $this->fullname))
+            ->map(fn($word) => strtoupper(substr($word, 0, 1)))
+            ->implode('');
+    }
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
@@ -40,16 +46,10 @@ class intern extends Model
         );
     }
 
-    // Helper method to get the first department (since usually one intern applies to one department)
-    public function department()
+
+
+    public function activity()
     {
-        return $this->hasOneThrough(
-            department::class,  // Final model
-            docs::class,        // Intermediate model
-            'intern_id',        // Foreign key on docs table
-            'id',               // Foreign key on departments table
-            'id',               // Local key on interns table
-            'department_id'     // Local key on docs table
-        );
+        return $this->hasMany(activity::class, 'activity_id', 'id');
     }
 }

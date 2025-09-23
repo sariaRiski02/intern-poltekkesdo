@@ -2,32 +2,35 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\docs;
-
 use App\Models\intern;
+use App\Models\visitor;
+use App\Models\activity;
+use App\Models\department;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+
 
 class AdminController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $peserta = intern::count();
+        $department = department::count();
+        $visitor = visitor::count();
+        $docs = docs::with('intern', 'department');
+        $interns = $docs->latest()->take(5)->get();
+        $docs = $docs->get();
+        $activities = activity::latest()->take(3)->get();
+
+        return view('admin.dashboard', compact('peserta', 'department', 'visitor', 'docs', 'activities', 'interns'));
     }
 
-    public function intern()
+    public function activity_index()
     {
-        $docs = docs::with('intern.user', 'department');
-        $CountPeserta = intern::count();
-        $docs = $docs->latest()->paginate(5);
-        $AllDocs = docs::all();
 
-        return view('admin.intern', compact('docs', 'CountPeserta', 'AllDocs'));
-    }
-    public function detail_intern(docs $docs)
-    {
-        return view('admin.detail-intern', compact('docs'));
+        $activities = activity::with('intern')->latest()->paginate(10);
+
+        return view('admin.activity', compact('activities'));
     }
 
     public function department()
@@ -44,38 +47,5 @@ class AdminController extends Controller
     public function profile()
     {
         return view('admin.profile');
-    }
-
-    public function edit_status(docs $docs, $status)
-    {
-
-        // Validate the status input
-        $validStatuses = ['pending', 'diterima', 'ditolak', 'selesai'];
-        if (!in_array($status, $validStatuses)) {
-            return redirect()->back()->with('error', 'Status tidak valid.');
-        }
-
-        // Update the status
-        $docs->status = $status;
-        $docs->save();
-
-        return redirect()->route('admin.detail-intern', $docs->slug)->with('success', 'Status peserta berhasil diperbarui.');
-    }
-
-    public function document($file)
-    {
-
-        $docs = Docs::where('transcript', $file)
-            ->orWhere('cv', $file)
-            ->orWhere('application_letter', $file)
-            ->firstOrFail();
-
-        $path = $docs->transcript ?? $docs->cv ?? $docs->application_letter;
-
-        if (!Storage::exists($path)) {
-            return redirect()->back()->with('error', 'File Belum Diunggah');
-        }
-
-        return redirect(Storage::url($path));
     }
 }

@@ -117,7 +117,7 @@ class InternController extends Controller
             $docs->$transkrip = $transkrip;
         }
         $docs->save();
-
+        
         return redirect()->route('announcement');
     }
 }

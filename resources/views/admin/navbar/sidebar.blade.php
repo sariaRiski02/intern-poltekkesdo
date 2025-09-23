@@ -28,7 +28,7 @@
                 <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider px-2 sm:px-3 mb-2 sm:mb-3">Main Menu</p>
 
                 <!-- Dashboard -->
-                <a href="{{ route('dashboard') }}"
+                <a href="{{ route('admin.dashboard') }}"
                 class="flex items-center gap-2 sm:gap-3 px-2 sm:px-3 py-2 sm:py-3 rounded-xl font-medium text-slate-700
                 hover:bg-gradient-to-r hover:from-emerald-100 hover:to-blue-100 hover:text-emerald-700 transition-all duration-300 group
                 {{ request()->routeIs('admin.dashboard') ? 'bg-gradient-to-r from-emerald-100 to-blue-100 text-emerald-700' : '' }}">

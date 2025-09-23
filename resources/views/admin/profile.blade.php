@@ -124,7 +124,7 @@
                             <p class="text-emerald-100 text-sm">Pastikan semua informasi sudah benar sebelum menyimpan</p>
                         </div>
                         <div class="flex gap-3">
-                            <a href="{{ route('dashboard') }}"
+                            <a href="{{ route('admin.dashboard') }}"
                                class="px-6 py-3 bg-white/20 backdrop-blur text-white rounded-xl hover:bg-white/30 transition-all duration-200 font-semibold border border-white/30 flex items-center gap-2">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>

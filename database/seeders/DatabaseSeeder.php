@@ -5,8 +5,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-
 use Illuminate\Database\Seeder;
+use Database\Seeders\VisitorSeeder;
+use Database\Seeders\ActivitySeeder;
 
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +21,8 @@ class DatabaseSeeder extends Seeder
             DepartmentSeeder::class,
             RequirmentSeeder::class,
             DocsSeeder::class,
+            VisitorSeeder::class,
+            ActivitySeeder::class,
         ]);
     }
 }
