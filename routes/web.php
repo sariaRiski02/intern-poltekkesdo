@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\InternController;
@@ -27,15 +28,13 @@ Route::middleware([visitorMiddleware::class])->group(function () {
         return view('pages.contact');
     })->name('contact');
 
-    Route::get('/login', function () {
-        return view('pages.login');
-    })->name('login');
-
-    Route::get('/register', function () {
-        return view('pages.register');
-    })->name('register');
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login', [AuthController::class, 'login_process'])->name('login-process');
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
 
     Route::fallback(fn() => view('pages.empty-url'));
 
     require_once __DIR__ . '/admin/admin.php';
+
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });

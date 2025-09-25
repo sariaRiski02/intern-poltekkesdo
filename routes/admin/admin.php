@@ -2,13 +2,20 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminInternController;
+use App\Http\Controllers\AdminProfilController;
 use App\Http\Controllers\AdminAddInternController;
 use App\Http\Controllers\AdminDepartmentController;
-use App\Http\Controllers\AdminProfilController;
 
 Route::prefix('admin')->group(function () {
+
+    Route::get('/login', [AuthController::class, 'login'])->name('admin.login');
+    Route::post('/login', [AuthController::class, 'login_admin_process'])->name('admin.login-process');
+
+
+
     Route::get('/', fn() => redirect()->route('admin.dashboard'));
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/aktivitas', [AdminController::class, 'activity_index'])->name('admin.activity-index');
