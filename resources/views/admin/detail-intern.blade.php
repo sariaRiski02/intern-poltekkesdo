@@ -123,10 +123,10 @@
                 <span class="text-sm font-medium text-gray-500 mb-1">No HP</span>
                 <span class="text-gray-900 font-mono">{{ $docs->intern->no_hp }}</span>
               </div>
-              <div class="flex flex-col">
+              {{-- <div class="flex flex-col">
                 <span class="text-sm font-medium text-gray-500 mb-1">Password Sementara</span>
                 <span class="text-gray-900 font-mono">{{ $passwordManual ?? '-' }}</span>
-              </div>
+              </div> --}}
               <div class="flex flex-col">
                 <span class="text-sm font-medium text-gray-500 mb-1">Alamat</span>
                 <span class="text-gray-900">{{ $docs->intern->address }}</span>

@@ -65,17 +65,17 @@
 
                 <!-- No HP -->
                 <div>
-                <label for="no_hp" class="block text-sm font-medium text-slate-700 mb-2">
-                    Nomor HP <span class="text-red-500">*</span>
-                </label>
-                <div class="relative group">
-                    <input value="{{ old('no_hp') }}" type="tel" id="no_hp" name="no_hp" required
-                            class="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-400 transition-all duration-300 bg-white/70 backdrop-blur-sm hover:bg-white/90 hover:shadow-md placeholder-slate-400 group-hover:border-slate-300">
-                    <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                </div>
-                        @error('no_hp')
-                            <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
-                        @enderror
+                    <label for="no_hp" class="block text-sm font-medium text-slate-700 mb-2">
+                        Nomor HP <span class="text-red-500">*</span>
+                    </label>
+                    <div class="relative group">
+                        <input value="{{ old('no_hp') }}" type="tel" id="no_hp" name="no_hp" required
+                                class="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-400 transition-all duration-300 bg-white/70 backdrop-blur-sm hover:bg-white/90 hover:shadow-md placeholder-slate-400 group-hover:border-slate-300">
+                        <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    </div>
+                            @error('no_hp')
+                                <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                            @enderror
                 </div>
 
                 <!-- Alamat -->

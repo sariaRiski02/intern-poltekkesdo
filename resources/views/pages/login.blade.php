@@ -77,6 +77,7 @@
                     </div>
                 @endif
 
+
                 <!-- Form action berdasarkan route yang aktif -->
                 <form method="POST" action="{{ request()->routeIs('admin.login') ? route('admin.login') : route('login') }}">
                     @csrf
@@ -99,13 +100,15 @@
                                 type="text"
                                 id="email"
                                 name="username"
-                                value="{{ old('email') }}"
-                                class="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors bg-white/50 backdrop-blur-sm @error('email') border-red-500 @enderror"
+                                value="{{ old('username') }}"
+                                class="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors bg-white/50 backdrop-blur-sm @error('username') border-red-500 @enderror"
                                 placeholder="contoh@email.com {{ $admin ? ',' .$admin : '' }}"
                                 required
                             >
                         </div>
-
+                        @error('username')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <!-- Password Field -->
@@ -139,7 +142,9 @@
                                 </button>
                             </div>
                         </div>
-
+                        @error('password')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <!-- Remember Me & Forgot Password -->
@@ -156,7 +161,6 @@
                                 Ingat saya
                             </label>
                         </div>
-
                     </div>
 
                     <!-- Login Button -->
@@ -190,6 +194,7 @@
                         </p>
                     </div>
                 </form>
+
             </div>
 
             <!-- Additional Info -->

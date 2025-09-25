@@ -16,7 +16,12 @@
           <!-- Desktop Menu -->
           <div class="hidden md:flex items-center gap-6">
             <a href="{{ route('home') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Beranda</a>
+
+            @if(Auth::check() && Auth::user()->role == 'intern')
+
             <a href="{{ route('announcement') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Pengumuman</a>
+
+            @endif
             <a href="{{ route('about') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Tentang</a>
             <a href="{{ route('contact') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Kontak</a>
             @guest
@@ -68,7 +73,7 @@
             @auth
               <div class="flex flex-col gap-3 mt-2">
                 <div class="text-emerald-700 font-medium px-4 py-2">Halo, {{ Auth::user()->name }}</div>
-                <form action="{{ route('logout') }}" method="POST">
+                <form action="{{ route('logout') }}" method="GET">
                   @csrf
                   <button type="submit" class="w-full bg-gradient-to-r from-red-500 to-rose-500 text-white font-bold px-4 py-2 rounded-lg shadow hover:from-red-600 hover:to-rose-600 transition-all border-2 border-red-600 hover:border-rose-600 text-center">
                       Logout

@@ -3,8 +3,10 @@
 
 namespace App\Services;
 
+use App\Models\User;
 use App\Models\admin;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 
 
@@ -33,7 +35,6 @@ class AuthService
             return redirect()->route('admin.dashboard');
         }
 
-        dd('error');
         return redirect()->back()->withErrors([
             'error' => 'Email, NIP atau Passwordnya Salah, Coba lagi!',
         ]);
@@ -42,9 +43,10 @@ class AuthService
 
     public function registerAdmin($data)
     {
+
         // create user
-        $user = new \App\Models\User();
-        $user->name = $data['fullname'];
+        $user = new User();
+        $user->name = $data['name'];
         $user->email = $data['email'];
         $user->password = bcrypt($data['password']);
         $user->role = 'admin';
@@ -52,12 +54,39 @@ class AuthService
 
         // create admin
         $admin = new admin();
-        $admin->fullname = $data['fullname'];
+        $admin->fullname = $data['name'];
         $admin->nip = $data['nip'];
         $admin->no_hp = $data['no_hp'];
         $admin->user_id = $user->id;
         $admin->save();
 
-        return $admin;
+        if (!$admin) {
+            return redirect()->back()->withErrors([
+                'error' => 'Email atau Passwordnya Salah, Coba lagi!',
+            ]);
+        }
+
+
+        return redirect()->route('admin.login')
+            ->with('success', 'Registrasi sukses 🎉, silakan masuk untuk melanjutkan.');
+    }
+
+    public function registerIntern($data)
+    {
+        $user = new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->role = 'intern';
+        $user->password = Hash::make($data['password']);
+        $user->save();
+
+        if (!$user) {
+            return redirect()->back()->withErrors([
+                'error' => 'Email atau Passwordnya Salah, Coba lagi!',
+            ]);
+        }
+
+        return redirect()->route('admin.login')
+            ->with('success', 'Registrasi sukses 🎉, silakan masuk untuk melanjutkan.');
     }
 }

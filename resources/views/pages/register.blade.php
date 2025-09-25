@@ -26,9 +26,64 @@
         <p class="text-slate-600">Program Magang Poltekkes Manado</p>
       </div>
 
+
+
       <!-- Register Form -->
       <div class="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-emerald-100">
-        <form method="POST" action="{{ route('register') }}" id="registerForm">
+         <!-- Role Selection -->
+        <div class="mb-6">
+            <p class="text-center text-sm font-semibold text-slate-700 mb-4">Masuk sebagai:</p>
+            <div class="flex gap-2">
+                <a href="{{ route('register') }}"
+                    class="flex-1 py-3 px-4 text-sm font-medium rounded-xl border-2 transition-all duration-300
+                    {{ request()->routeIs('register') ? 'bg-gradient-to-r from-emerald-500 to-blue-500 text-white border-transparent shadow-lg' : 'bg-white/50 text-slate-600 border-slate-200 hover:border-emerald-300 hover:bg-emerald-50' }}"
+                >
+                    <div class="flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                        </svg>
+                        Peserta Magang
+                    </div>
+                </a>
+                <a href="{{ route('admin.register') }}"
+                    class="flex-1 py-3 px-4 text-sm font-medium rounded-xl border-2 transition-all duration-300
+                    {{ request()->routeIs('admin.register') ? 'bg-gradient-to-r from-emerald-500 to-blue-500 text-white border-transparent shadow-lg' : 'bg-white/50 text-slate-600 border-slate-200 hover:border-emerald-300 hover:bg-emerald-50' }}"
+                >
+                    <div class="flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                        Administrator
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+        {{-- pesan erro --}}
+        @if($errors->has('error'))
+            <div id="error-alert" class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 text-red-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <p class="text-red-700 text-sm">{{ $errors->first('error') }}</p>
+                    </div>
+                    <button onclick="document.getElementById('error-alert').remove()" class="text-red-500 hover:text-red-700 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        @endif
+
+
+        <form method="POST" action="
+        {{
+            request()->routeIs('admin.register') ? route('admin.register-process') : route('register-process')
+        }}" id="registerForm">
           @csrf
 
           <!-- Name Field -->
@@ -82,6 +137,35 @@
               <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
             @enderror
           </div>
+
+          @if(request()->routeIs('admin.register'))
+            <!-- nip Field -->
+            <div class="mb-6">
+                <label for="nip" class="block text-sm font-semibold text-slate-700 mb-2">
+                nip
+                </label>
+                <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <input
+                    type="text"
+                    id="nip"
+                    name="nip"
+                    value="{{ old('nip') }}"
+                    class="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors bg-white/50 backdrop-blur-sm @error('nip') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror"
+                    placeholder="112233445566"
+                    required
+                >
+                </div>
+                @error('nip')
+                <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
+                @enderror
+            </div>
+          @endif
+
 
           <!-- Password Field -->
           <div class="mb-6">

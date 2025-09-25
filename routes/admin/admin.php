@@ -8,14 +8,20 @@ use App\Http\Controllers\AdminInternController;
 use App\Http\Controllers\AdminProfilController;
 use App\Http\Controllers\AdminAddInternController;
 use App\Http\Controllers\AdminDepartmentController;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\loggedInMiddleware;
 
-Route::prefix('admin')->group(function () {
-
+Route::middleware(loggedInMiddleware::class)->prefix('admin')->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('admin.login');
     Route::post('/login', [AuthController::class, 'login_admin_process'])->name('admin.login-process');
+    Route::get('/register', [AuthController::class, 'register'])->name('admin.register');
+    Route::post('/register', [AuthController::class, 'register_admin_process'])->name('admin.register-process');
+});
 
 
 
+
+Route::middleware([AdminMiddleware::class])->prefix('admin')->group(function () {
     Route::get('/', fn() => redirect()->route('admin.dashboard'));
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/aktivitas', [AdminController::class, 'activity_index'])->name('admin.activity-index');

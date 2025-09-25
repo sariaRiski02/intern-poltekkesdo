@@ -67,7 +67,7 @@ class AuthController extends Controller
     public function login_intern_process(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
+            'username' => 'required|email',
             'password' => 'required|min:6',
         ]);
 
@@ -91,15 +91,44 @@ class AuthController extends Controller
 
     public function register()
     {
+
         return view('pages.register');
     }
 
-    public function logout()
+    public function register_admin_process(Request $request)
     {
-        // Logic for logging out the user
-        Auth::logout();
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|unique:users,email',
+            'password' => 'required|confirmed|min:6',
+            'nip' => 'required|string|min:8|max:20'
+        ]);
 
-        // Redirect to the home page after logout
+
+        return $this->authService->registerAdmin($request);
+    }
+
+    public function register_intern_process(Request $request)
+    {
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|unique:users.email',
+            'password' => 'required|confirmed|min:6',
+        ]);
+
+        return $this->authService->registerIntern($request);
+    }
+
+
+    public function logout(Request $request)
+    {
+
+
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         return redirect()->route('home')->with('message', 'You have been logged out successfully.');
     }
 }
