@@ -22,7 +22,7 @@
                 <h2 class="text-2xl font-bold text-white">Informasi Akun</h2>
             </div>
 
-            <form action="#" method="POST" class="p-8 space-y-8">
+            <form action="{{ route('admin.profile-store') }}" method="POST" class="p-8 space-y-8">
                 @csrf
                 @method('PUT')
 

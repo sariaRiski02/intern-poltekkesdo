@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('slug')->nullable(false);
             $table->string('head_desc')->nullable();
             $table->string('desc')->nullable();
-            $table->foreignId('admin_id')->constrained('admins');
+            $table->string('is_active')->default('1');
+            $table->foreignId('admin_id')->nullable()->constrained('admins');
             $table->timestamps();
         });
     }

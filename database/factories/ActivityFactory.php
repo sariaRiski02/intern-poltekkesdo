@@ -20,8 +20,8 @@ class ActivityFactory extends Factory
     {
         return [
             'activity' => $this->faker->randomElement(['login', 'logout', 'register', 'create', 'update', 'delete', 'upload']),
+            'name' => intern::inRandomOrder()->first()->fullname,
             'description' => $this->faker->paragraph(),
-            'intern_id' => intern::inRandomOrder()->first()->id,
             'visitor_id' => visitor::inRandomOrder()->first()->id,
         ];
     }

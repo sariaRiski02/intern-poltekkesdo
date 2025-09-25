@@ -11,6 +11,9 @@ class requirment extends Model
 {
     /** @use HasFactory<\Database\Factories\RequirmentFactory> */
     use HasFactory;
+    protected $guarded = [
+        'id',
+    ];
 
     public function department()
     {

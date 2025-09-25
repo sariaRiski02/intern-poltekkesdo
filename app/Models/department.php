@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Models\docs;
+use App\Models\admin;
+use App\Models\intern;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -11,12 +13,8 @@ class department extends Model
     /** @use HasFactory<\Database\Factories\DepartmentFactory> */
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'head_desc',
-        'slug',
-        'desc',
-        'admin_id'
+    protected $guarded = [
+        'id',
     ];
 
     /**
@@ -35,5 +33,14 @@ class department extends Model
     public function docs()
     {
         return $this->hasMany(docs::class, 'department_id', 'id');
+    }
+
+    public function intern()
+    {
+        return $this->hasManyThrough(intern::class, docs::class, 'department_id', 'id', 'id', 'intern_id');
+    }
+    public function admin()
+    {
+        return $this->belongsTo(admin::class, 'admin_id', 'id');
     }
 }

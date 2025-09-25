@@ -124,6 +124,10 @@
                 <span class="text-gray-900 font-mono">{{ $docs->intern->no_hp }}</span>
               </div>
               <div class="flex flex-col">
+                <span class="text-sm font-medium text-gray-500 mb-1">Password Sementara</span>
+                <span class="text-gray-900 font-mono">{{ $passwordManual ?? '-' }}</span>
+              </div>
+              <div class="flex flex-col">
                 <span class="text-sm font-medium text-gray-500 mb-1">Alamat</span>
                 <span class="text-gray-900">{{ $docs->intern->address }}</span>
               </div>
@@ -179,6 +183,9 @@
             </div>
             <div class="p-6">
               <div class="space-y-4">
+
+
+                @if($docs->application_letter)
                 <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100 hover:bg-gray-100 transition-colors duration-200">
                   <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -188,11 +195,10 @@
                     </div>
                     <div>
                       <div class="font-medium text-gray-900">Surat Pengajuan</div>
-
                     </div>
                   </div>
                   {{-- surat pengajuan --}}
-                  <a href="{{ route('admin.document',$docs->application_letter) }}" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200">
+                  <a href="{{ route('admin.document', $docs->application_letter) }}" target="_blank" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors duration-200">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
@@ -200,7 +206,9 @@
                     Lihat
                   </a>
                 </div>
+                @endif
 
+                @if($docs->cv)
                 <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100 hover:bg-gray-100 transition-colors duration-200">
                   <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
@@ -214,6 +222,7 @@
                     </div>
                   </div>
                   {{-- Curriculum Vitae --}}
+
                   <a href="{{ route('admin.document',$docs->cv) }}" class="inline-flex items-center px-4 py-2 bg-green-600 text-white text-sm font-medium rounded-lg hover:bg-green-700 transition-colors duration-200">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
@@ -222,8 +231,10 @@
                     Lihat
                   </a>
                 </div>
+                @endif
 
-                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100 hover:bg-gray-100 transition-colors duration-200">
+                @if($docs->transcript)
+                 <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100 hover:bg-gray-100 transition-colors duration-200">
                   <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
                       <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -243,6 +254,8 @@
                     Lihat
                   </a>
                 </div>
+                @endif
+
               </div>
             </div>
           </div>

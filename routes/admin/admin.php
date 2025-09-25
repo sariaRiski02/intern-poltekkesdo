@@ -4,6 +4,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminInternController;
+use App\Http\Controllers\AdminAddInternController;
+use App\Http\Controllers\AdminDepartmentController;
+use App\Http\Controllers\AdminProfilController;
 
 Route::prefix('admin')->group(function () {
     Route::get('/', fn() => redirect()->route('admin.dashboard'));
@@ -15,12 +18,23 @@ Route::prefix('admin')->group(function () {
         // edit status
         Route::get('/{docs:slug}/edit/{status}', [AdminInternController::class, 'edit_status'])->name('admin.edit-intern-status');
         // download document
-        Route::get('/document/{filename}', [AdminInternController::class, 'document'])->name('admin.document');
+        Route::get('/document/{filename}', [AdminInternController::class, 'document'])->where('filename', '.*')->name('admin.document');
     });
-
     Route::prefix('department')->group(function () {
         Route::get('/', [AdminController::class, 'department'])->name('admin.department');
+        Route::get('/add', [AdminDepartmentController::class, 'add_department'])->name('admin.add-department');
+        Route::post('/add', [AdminDepartmentController::class, 'add_department_process'])->name('admin.add-department-process');
+        Route::get('/detail/{department:slug}', [AdminDepartmentController::class, 'detail_department'])->name('admin.detail-department');
+        Route::get('/{department:slug}/update', [AdminDepartmentController::class, 'update_department'])->name('admin.update-department');
+        Route::put('/{department:slug}/update', [AdminDepartmentController::class, 'update_department_process'])->name('admin.update-department-process');
+        Route::get('/{department:slug}/delete', [AdminDepartmentController::class, 'delete_department'])->name('admin.delete-department');
     });
-    Route::get('/tambah-peserta', [AdminController::class, 'add_intern'])->name('admin.add-intern');
+
+    Route::prefix('form')->group(function () {
+        Route::get('/add-intern', [AdminController::class, 'add_intern'])->name('admin.add-intern');
+        Route::post('/add-intern', [AdminAddInternController::class, 'add_intern_process'])->name('admin.add-intern-process');
+    });
+
     Route::get('/profil', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::put('/profil', [AdminProfilController::class, 'profile_store'])->name('admin.profile-store');
 });

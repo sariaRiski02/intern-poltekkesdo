@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('docs', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->nullable(false)->unique();
-            $table->string('transcript')->nullable();
             $table->string('application_letter')->nullable(false);
+            $table->string('transcript')->nullable();
             $table->string('cv')->nullable();
             $table->date('date_start')->nullable(false);
             $table->date('date_end')->nullable(false);

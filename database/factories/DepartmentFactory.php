@@ -25,6 +25,7 @@ class DepartmentFactory extends Factory
             'name' => $name,
             'head_desc' => $this->faker->sentence(6),
             'slug' => Str::slug($name),
+
             'desc' => $this->faker->sentence(),
             'admin_id' => admin::factory()->create()->id,
 

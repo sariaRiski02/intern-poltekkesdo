@@ -36,12 +36,15 @@ class AdminController extends Controller
     public function department()
     {
 
-        return view('admin.department');
+        $departments = department::withCount('intern')->where('is_active', true)->latest()->paginate(10);
+
+        return view('admin.department', compact('departments'));
     }
 
     public function add_intern()
     {
-        return view('admin.add-intern');
+        $departments = department::where('is_active', true)->get();
+        return view('admin.form.add-intern-form', compact('departments'));
     }
 
     public function profile()

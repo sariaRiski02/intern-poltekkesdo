@@ -68,7 +68,7 @@ class InternController extends Controller
 
 
         $intern = new intern();
-        $intern->user_id = optional(Auth::user())->id ?? Auth::first()->id;
+        $intern->user_id = optional(Auth::user())->id ?? null;
         $intern->fullname = $validatedData['nama_lengkap'];
         $intern->slug = Str::slug($validatedData['nama_lengkap'] . '-' . Str::random(5));
         $intern->university = $validatedData['universitas'];
@@ -92,7 +92,7 @@ class InternController extends Controller
         // simpan surat pengajuan
         if ($request->hasFile('surat_pengajuan')) {
             $suratPath = $request->file('surat_pengajuan')->store(
-                'documents/surat/pengajuan/',
+                'documents/surat/pengajuan',
                 'public'
             );
             $docs->application_letter = $suratPath;
@@ -101,7 +101,7 @@ class InternController extends Controller
         // simpan cv
         if ($request->hasFile('cv')) {
             $cv = $request->file('cv')->store(
-                'documents/cv/',
+                'documents/cv',
                 'public'
             );
 
@@ -111,13 +111,13 @@ class InternController extends Controller
         // simpan transkrip
         if ($request->has('transkrip')) {
             $transkrip = $request->file('transkrip')->store(
-                'documents/transkript/',
+                'documents/transkript',
                 'public'
             );
             $docs->$transkrip = $transkrip;
         }
         $docs->save();
-        
+
         return redirect()->route('announcement');
     }
 }

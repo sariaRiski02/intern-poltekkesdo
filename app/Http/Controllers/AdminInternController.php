@@ -14,15 +14,20 @@ class AdminInternController extends Controller
     {
         $docs = docs::with('intern.user', 'department');
         $CountPeserta = intern::count();
-        $docs = $docs->latest()->paginate(5);
+        $docs = $docs->latest()->paginate(10);
         $AllDocs = docs::all();
+
+
+
 
         return view('admin.intern', compact('docs', 'CountPeserta', 'AllDocs'));
     }
 
     public function detail_intern(docs $docs)
     {
-        return view('admin.detail-intern', compact('docs'));
+        $docs->load('intern.user', 'department');
+        $passwordManual = $docs->intern->user->password_manual;
+        return view('admin.detail-intern', compact('docs', 'passwordManual'));
     }
 
     public function edit_status(docs $docs, $status)
@@ -44,6 +49,10 @@ class AdminInternController extends Controller
     public function document($file)
     {
 
+
+        // dd($file);
+
+        $file = urldecode($file);
         $docs = Docs::where('transcript', $file)
             ->orWhere('cv', $file)
             ->orWhere('application_letter', $file)
@@ -51,9 +60,14 @@ class AdminInternController extends Controller
 
         $path = $docs->transcript ?? $docs->cv ?? $docs->application_letter;
 
-        if (!Storage::exists($path)) {
+
+
+        // return redirect(Storage::url($path));
+
+        if (!Storage::disk('public')->exists($path)) {
             return redirect()->back()->with('error', 'File Belum Diunggah');
         }
+
 
         return redirect(Storage::url($path));
     }

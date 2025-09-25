@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
             $table->string('activity')->nullable();
+            $table->string('name')->nullable();
             $table->string('description')->nullable();
-            $table->foreignId('intern_id')->constrained('interns')->onDelete('cascade');
-            $table->foreignId('visitor_id')->constrained('visitors')->onDelete('cascade');
+            $table->foreignId('visitor_id')->nullable()->constrained('visitors')->onDelete('cascade');
             $table->timestamps();
         });
     }
