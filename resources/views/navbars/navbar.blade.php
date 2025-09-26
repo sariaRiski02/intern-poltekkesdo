@@ -17,11 +17,14 @@
           <div class="hidden md:flex items-center gap-6">
             <a href="{{ route('home') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Beranda</a>
 
-            @if(Auth::check() && Auth::user()->role == 'intern')
 
-            <a href="{{ route('announcement') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Pengumuman</a>
+            @auth
+                <a href="{{ route('announcement') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Pengumuman</a>
+            @endauth
 
-            @endif
+
+
+
             <a href="{{ route('about') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Tentang</a>
             <a href="{{ route('contact') }}" class="text-emerald-700 hover:text-emerald-600 font-medium transition-colors">Kontak</a>
             @guest
