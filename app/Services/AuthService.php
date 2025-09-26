@@ -14,6 +14,7 @@ class AuthService
 {
     public function loginAdminNip($credentials)
     {
+
         $nip = $credentials['nip'];
         $admin = admin::where('nip', $nip)->first()->with('user')->first();
 
@@ -29,6 +30,14 @@ class AuthService
 
     public function loginAdminEmail($credentials)
     {
+
+        $role = user::where('email', $credentials['email'])->first()->role;
+        if ($role != 'admin') {
+            return redirect()->back()->withErrors([
+                'error' => 'Silahkan Login Menggunakan Akun Admin',
+            ]);
+        }
+
 
         $remember = request()->filled('remember');
         if (Auth::attempt($credentials, $remember)) {

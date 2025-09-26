@@ -37,6 +37,8 @@ class AuthController extends Controller
             'password' => 'required|min:6',
         ]);
 
+
+
         // cek if email is nip
         if (admin::where('nip', $request->username)->exists()) {
             // attempt to login as admin
@@ -77,9 +79,13 @@ class AuthController extends Controller
             'email' => $request->username,
             'password' => $request->password,
         ];
-
+        $role = user::where('email', $credentials['email'])->first()->role;
+        if ($role != 'intern') {
+            return redirect()->back()->withErrors([
+                'error' => 'Silahkan Login Menggunakan Akun Peserta'
+            ]);
+        }
         $remember = $request->filled('remember');
-
         if (Auth::attempt($credentials, $remember)) {
             return redirect()->route('home');
         }

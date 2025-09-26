@@ -16,6 +16,10 @@ class InternMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return Auth::user()->role = 'intern' ? $next($request) : redirect()->route('login');
+
+        if (Auth::check() && Auth::user()->role == 'intern') {
+            return $next($request);
+        }
+        return redirect()->route('home');
     }
 }
