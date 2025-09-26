@@ -244,6 +244,36 @@
             @enderror
           </div>
 
+          <!-- registration code Field -->
+          @if(request()->routeIs('admin.register'))
+          <div class="mb-6">
+            <label for="registration_code" class="block text-sm font-semibold text-slate-700 mb-2">
+              kode registrasi
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                </svg>
+              </div>
+              <input
+                type="text"
+                id="registration_code"
+                registration_code="registration_code"
+                value="{{ old('registration_code') }}"
+                class="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors bg-white/50 backdrop-blur-sm @error('registration_code') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror"
+                placeholder="Minta kode pada Tim IT poltekkes"
+                required
+              >
+            </div>
+            @error('registration_code')
+              <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
+            @enderror
+          </div>
+          @endif
+
+
+
           <!-- Terms and Conditions -->
           <div class="mb-6">
             <div class="flex items-start">

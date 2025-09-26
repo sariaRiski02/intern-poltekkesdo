@@ -101,9 +101,15 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|unique:users,email',
             'password' => 'required|confirmed|min:6',
-            'nip' => 'required|string|min:8|max:20'
+            'nip' => 'required|string|min:8|max:20',
+            'registration_code' => 'required|string',
         ]);
 
+        if ($request->registration_code != ENV('REGISTRATION_CODE')) {
+            return redirect()->beck()->withErrors([
+                'error' => 'kode registrasi salah, silahkan coba lagi'
+            ]);
+        }
 
         return $this->authService->registerAdmin($request);
     }

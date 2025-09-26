@@ -17,11 +17,7 @@ class loggedInMiddleware
     public function handle(Request $request, Closure $next): Response
     {
 
-        if ($request->routeIs('logout')) {
-            return $next($request);
-        }
-
-        if (Auth::check()) {
+        if (Auth::check() && !$request->routeIs('logout')) {
             return redirect()->route('home');
         }
         return $next($request);
