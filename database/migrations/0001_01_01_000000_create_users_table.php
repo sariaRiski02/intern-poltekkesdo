@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->enum('role', ['intern', 'admin']);
-            $table->boolean('password_manual')->default('intern-polkesdo');
+            $table->string('password_manual')->default('intern-polkesdo');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
