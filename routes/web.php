@@ -6,6 +6,7 @@ use App\Http\Controllers\GuestController;
 use App\Http\Controllers\InternController;
 use App\Http\Middleware\InternMiddleware;
 use App\Http\Middleware\loggedInMiddleware;
+use App\Http\Middleware\MustLoginMiddleware;
 use App\Http\Middleware\visitorMiddleware;
 
 Route::middleware([visitorMiddleware::class])->group(function () {
@@ -15,12 +16,10 @@ Route::middleware([visitorMiddleware::class])->group(function () {
     Route::get('/', [GuestController::class, 'index'])->name('home');
     Route::get('/detail/{department:slug}', [GuestController::class, 'detail'])->name('detail');
 
-    Route::get('/department/{department:slug}/form', [InternController::class, 'index'])->name('intern.form');
-    Route::post('/department/{department:slug}/form', [InternController::class, 'internStore'])->middleware([loggedInMiddleware::class])->name('intern.store');
+    Route::get('/department/{department:slug}/form', [InternController::class, 'index'])->middleware([MustLoginMiddleware::class])->name('intern.form');
+    Route::post('/department/{department:slug}/form', [InternController::class, 'internStore'])->middleware([MustLoginMiddleware::class])->name('intern.store');
 
-    Route::get('/pengumuman', function () {
-        return view('pages.announcement');
-    })->middleware([InternMiddleware::class])->name('announcement');
+    Route::get('/pengumuman', [InternController::class, 'announcement'])->middleware([InternMiddleware::class])->name('announcement');
 
     Route::get('/tentang', function () {
         return  view('pages.about');

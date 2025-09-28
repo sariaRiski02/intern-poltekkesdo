@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\docs;
+use App\Models\User;
 use App\Models\intern;
 use App\Models\department;
 use Illuminate\Support\Str;
@@ -119,5 +120,13 @@ class InternController extends Controller
         $docs->save();
 
         return redirect()->route('announcement');
+    }
+
+    public function announcement()
+    {
+        $user = User::where('id', Auth::id())->first()->intern;
+        $docs = $user->docs()->get();
+
+        return view('pages.announcement', compact('docs'));
     }
 }
