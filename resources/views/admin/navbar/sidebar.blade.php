@@ -8,7 +8,7 @@
             <div class="flex items-center gap-2 sm:gap-3">
                 <div class="relative">
                     <img src="/images/logo.png" alt="Logo" class="h-10 w-10 sm:h-12 sm:w-12 object-contain">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-blue-400 rounded-full blur opacity-25"></div>
+
                 </div>
                 <div class="hidden sm:block">
                     <h2 class="text-base sm:text-lg font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">Admin Panel</h2>
@@ -64,7 +64,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                         </svg>
                     </div>
-                    <span class="text-sm sm:text-base">Departemen</span>
+                    <span class="text-sm sm:text-base">Unit</span>
                 </a>
 
                 <!-- Tambahkan Peserta -->

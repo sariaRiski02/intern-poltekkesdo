@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\docs;
 use App\Models\User;
 use App\Models\intern;
+use App\Models\activity;
 use App\Models\department;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -118,6 +119,14 @@ class InternController extends Controller
             $docs->$transkrip = $transkrip;
         }
         $docs->save();
+
+        // log activity
+        activity::create([
+            'activity' => 'create',
+            'description' => 'menambahkan lamaran magang baru',
+            'name' => Auth::user()->admin->fullname ?? request()->ip(),
+            'visitor_id' => Auth::id() ?? null,
+        ]);
 
         return redirect()->route('announcement');
     }

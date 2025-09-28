@@ -16,7 +16,7 @@
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
                         <h2 class="text-xl md:text-2xl font-bold mb-2">
-                            Selamat Datang, Admin! 👋
+                            Selamat Datang, {{ Auth::user()->name }}! 👋
                         </h2>
                         <p class="text-emerald-100 text-sm md:text-base">
                             Kelola dan pantau program magang Poltekkes Manado dengan mudah
@@ -61,7 +61,7 @@
                 </div>
                 <div>
                     <div class="text-2xl font-bold text-slate-800">{{ $department }}</div>
-                    <div class="text-sm text-slate-500">Departemen</div>
+                    <div class="text-sm text-slate-500">Unit</div>
                 </div>
             </div>
         </div>
@@ -310,8 +310,8 @@
                                 </svg>
                             </div>
                             <div>
-                                <p class="font-semibold text-blue-800 text-sm">Kelola Departemen</p>
-                                <p class="text-xs text-blue-600">Atur departemen magang</p>
+                                <p class="font-semibold text-blue-800 text-sm">Kelola Unit</p>
+                                <p class="text-xs text-blue-600">Atur Unit magang</p>
                             </div>
                         </a>
 
@@ -376,7 +376,7 @@
                     <tr>
                         <th class="text-left px-4 py-3 text-xs font-semibold text-slate-600 uppercase tracking-wide">Nama</th>
                         <th class="text-left px-4 py-3 text-xs font-semibold text-slate-600 uppercase tracking-wide">Universitas</th>
-                        <th class="text-left px-4 py-3 text-xs font-semibold text-slate-600 uppercase tracking-wide">Departemen</th>
+                        <th class="text-left px-4 py-3 text-xs font-semibold text-slate-600 uppercase tracking-wide">Unit</th>
                         <th class="text-left px-4 py-3 text-xs font-semibold text-slate-600 uppercase tracking-wide">Status</th>
                         <th class="text-left px-4 py-3 text-xs font-semibold text-slate-600 uppercase tracking-wide">Tanggal</th>
                     </tr>

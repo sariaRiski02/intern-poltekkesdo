@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\docs;
 use App\Models\intern;
+use App\Models\activity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class AdminInternController extends Controller
@@ -49,9 +51,6 @@ class AdminInternController extends Controller
     public function document($file)
     {
 
-
-        // dd($file);
-
         $file = urldecode($file);
         $docs = Docs::where('transcript', $file)
             ->orWhere('cv', $file)
@@ -60,14 +59,17 @@ class AdminInternController extends Controller
 
         $path = $docs->transcript ?? $docs->cv ?? $docs->application_letter;
 
-
-
-        // return redirect(Storage::url($path));
-
         if (!Storage::disk('public')->exists($path)) {
             return redirect()->back()->with('error', 'File Belum Diunggah');
         }
 
+        // log activity
+        activity::create([
+            'activity' => 'update',
+            'description' => 'update status peserta',
+            'name' => Auth::user()->admin->fullname ?? request()->ip(),
+            'visitor_id' => Auth::id() ?? null,
+        ]);
 
         return redirect(Storage::url($path));
     }

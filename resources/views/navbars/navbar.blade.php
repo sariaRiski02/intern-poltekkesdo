@@ -5,7 +5,6 @@
           <a href="{{ route('home') }}" class="flex items-center gap-4 hover:opacity-80 transition-opacity">
             <div class="relative">
               <img src="/images/logo.png" alt="Logo Kemenkes" class="h-12 w-12 object-contain" />
-              <div class="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-blue-400 rounded-full blur opacity-25"></div>
             </div>
             <div>
               <h1 class="font-bold text-xl text-emerald-800">Poltekkes Manado</h1>

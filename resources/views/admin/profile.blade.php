@@ -5,6 +5,39 @@
 @section('content')
 <div class="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-100 py-8">
     <div class="max-w-3xl mx-auto px-4">
+        <!-- Success/Info Messages -->
+        @if(session('success'))
+            <div id="alert" class="mb-6 bg-green-100 border border-green-400 text-green-700 px-6 py-4 rounded-xl shadow-sm flex justify-between">
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    {{ session('success') }}
+                </div>
+                <button onclick="document.getElementById('alert').remove()" class="text-red-500 hover:text-red-700 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        @endif
+
+        @if(session('info'))
+            <div id="alert" class="mb-6 bg-blue-100 border border-blue-400 text-blue-700 px-6 py-4 rounded-xl shadow-sm flex justify-between">
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    {{ session('info') }}
+                </div>
+                <button onclick="document.getElementById('alert').remove()" class="text-red-500 hover:text-red-700 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        @endif
+
         <!-- Header -->
         <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full mb-4">
@@ -48,8 +81,17 @@
                                     Nama Lengkap
                                 </div>
                             </label>
-                            <input type="text" name="name" value="John Doe"
-                                   class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 hover:border-gray-300 bg-white">
+                            <input type="text" name="name"
+                                   value="{{ old('name', Auth::user()->admin->fullname ?? '') }}"
+                                   class="w-full px-4 py-3 border-2 {{ $errors->has('name') ? 'border-red-300' : 'border-gray-200' }} rounded-xl shadow-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 hover:border-gray-300 bg-white">
+                            @error('name')
+                                <p class="text-red-500 text-xs mt-1 flex items-center gap-1">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    {{ $message }}
+                                </p>
+                            @enderror
                         </div>
 
                         <!-- NIP -->
@@ -62,8 +104,17 @@
                                     NIP
                                 </div>
                             </label>
-                            <input type="text" name="nip" value="123456789"
-                                   class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 hover:border-gray-300 bg-white">
+                            <input type="text" name="nip"
+                                   value="{{ old('nip', Auth::user()->admin->nip ?? '') }}"
+                                   class="w-full px-4 py-3 border-2 {{ $errors->has('nip') ? 'border-red-300' : 'border-gray-200' }} rounded-xl shadow-sm focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 hover:border-gray-300 bg-white">
+                            @error('nip')
+                                <p class="text-red-500 text-xs mt-1 flex items-center gap-1">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    {{ $message }}
+                                </p>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -79,7 +130,7 @@
                         <h3 class="text-xl font-bold text-gray-800">Keamanan Akun</h3>
                     </div>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="space-y-6">
                         <!-- Email -->
                         <div class="space-y-2">
                             <label class="block text-sm font-semibold text-gray-700">
@@ -90,27 +141,73 @@
                                     Email
                                 </div>
                             </label>
-                            <input type="email" name="email" value="admin@email.com"
-                                   class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:border-gray-300 bg-white">
+                            <input type="email" name="email"
+                                   value="{{ old('email', Auth::user()->email) }}"
+                                   class="w-full px-4 py-3 border-2 {{ $errors->has('email') ? 'border-red-300' : 'border-gray-200' }} rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:border-gray-300 bg-white">
+                            @error('email')
+                                <p class="text-red-500 text-xs mt-1 flex items-center gap-1">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    {{ $message }}
+                                </p>
+                            @enderror
                         </div>
 
-                        <!-- Password -->
-                        <div class="space-y-2">
-                            <label class="block text-sm font-semibold text-gray-700">
-                                <div class="flex items-center gap-2">
-                                    <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-                                    </svg>
-                                    Password Baru
-                                </div>
-                            </label>
-                            <input type="password" name="password" placeholder="••••••••••••"
-                                   class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:border-gray-300 bg-white">
-                            <p class="text-xs text-gray-500 flex items-center gap-1 mt-1">
-                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <!-- Password Fields in Grid -->
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <!-- Password -->
+                            <div class="space-y-2">
+                                <label class="block text-sm font-semibold text-gray-700">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                        </svg>
+                                        Password Baru
+                                    </div>
+                                </label>
+                                <input type="password" name="password" placeholder="••••••••••••"
+                                       class="w-full px-4 py-3 border-2 {{ $errors->has('password') ? 'border-red-300' : 'border-gray-200' }} rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:border-gray-300 bg-white">
+                                @error('password')
+                                    <p class="text-red-500 text-xs mt-1 flex items-center gap-1">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        {{ $message }}
+                                    </p>
+                                @enderror
+                            </div>
+
+                            <!-- Password Confirmation -->
+                            <div class="space-y-2">
+                                <label class="block text-sm font-semibold text-gray-700">
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                        </svg>
+                                        Konfirmasi Password
+                                    </div>
+                                </label>
+                                <input type="password" name="password_confirmation" placeholder="••••••••••••"
+                                       class="w-full px-4 py-3 border-2 {{ $errors->has('password_confirmation') ? 'border-red-300' : 'border-gray-200' }} rounded-xl shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 hover:border-gray-300 bg-white">
+                                @error('password_confirmation')
+                                    <p class="text-red-500 text-xs mt-1 flex items-center gap-1">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        {{ $message }}
+                                    </p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Password Help Text -->
+                        <div class="bg-blue-100 rounded-lg p-3">
+                            <p class="text-xs text-blue-700 flex items-center gap-1">
+                                <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
-                                Biarkan kosong jika tidak ingin mengganti password
+                                <span>Biarkan kedua field password kosong jika tidak ingin mengganti password. Password harus minimal 8 karakter dan kedua field harus sama.</span>
                             </p>
                         </div>
                     </div>

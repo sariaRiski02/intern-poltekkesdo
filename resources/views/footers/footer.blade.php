@@ -37,7 +37,7 @@
         </div>
 
         <div class="border-t border-slate-700 pt-8 text-center">
-          <p class="text-slate-400">&copy; created by intern-student</p>
+           <p class="text-slate-400">&copy; Created by Internship Students of University of Sam Ratulangi Manado</p>
         </div>
       </div>
     </footer>

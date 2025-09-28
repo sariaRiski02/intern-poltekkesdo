@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\intern;
+use App\Models\activity;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminAddInternController extends Controller
 {
@@ -68,6 +70,15 @@ class AdminAddInternController extends Controller
             'date_end' => $request->date_end,
             'status' => 'pending',
         ]);
+
+        // log activity
+        activity::create([
+            'activity' => 'Add',
+            'description' => 'menambahkan pesarta baru secara manual',
+            'name' => Auth::user()->admin->fullname ?? request()->ip(),
+            'visitor_id' => Auth::id() ?? null,
+        ]);
+
 
         return redirect()->route('admin.intern');
     }
