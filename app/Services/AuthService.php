@@ -31,8 +31,8 @@ class AuthService
     public function loginAdminEmail($credentials)
     {
 
-        $role = user::where('email', $credentials['email'])->first()->role;
-        if ($role != 'admin') {
+        $user = user::where('email', $credentials['email'])->first();
+        if ($user && $user->role != 'admin') {
             return redirect()->back()->withErrors([
                 'error' => 'Silahkan Login Menggunakan Akun Admin',
             ]);

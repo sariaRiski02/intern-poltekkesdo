@@ -80,8 +80,8 @@ class AuthController extends Controller
             'email' => $request->username,
             'password' => $request->password,
         ];
-        $role = user::where('email', $credentials['email'])->first()->role;
-        if ($role != 'intern') {
+        $user = user::where('email', $credentials['email'])->first();
+        if ($user && $user->role != 'intern') {
             return redirect()->back()->withErrors([
                 'error' => 'Silahkan Login Menggunakan Akun Peserta'
             ]);
@@ -126,7 +126,7 @@ class AuthController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|unique:users.email',
+            'email' => 'required|string|unique:users,email',
             'password' => 'required|confirmed|min:6',
         ]);
 

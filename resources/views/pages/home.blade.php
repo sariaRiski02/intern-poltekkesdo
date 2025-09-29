@@ -11,8 +11,9 @@
       </div>
     </section>
 
-    {{-- @include('pages.empty-intern') --}}
-
+    @if($departments->isEmpty())
+    @include('pages.empty-intern')
+    @endif
 
 <!-- Lowongan Section -->
     <section id="lowongan" class="py-16">
