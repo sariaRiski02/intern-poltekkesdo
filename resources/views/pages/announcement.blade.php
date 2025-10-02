@@ -36,7 +36,8 @@
                     </svg>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold text-green-700">Unit Administrasi</h3>
+
+                    <h3 class="text-2xl font-bold text-green-700">Unit {{ $doc->department->name }}</h3>
                     <div class="flex items-center gap-2 mt-1">
                     <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">✅ DITERIMA</span>
 
@@ -134,19 +135,13 @@
 
       <!-- Action Buttons -->
       <div class="text-center bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-slate-100" data-aos="fade-up" data-aos-delay="600">
-        <h3 class="text-lg font-semibold text-slate-800 mb-4">Butuh bantuan atau ingin mendaftar di Unit lain?</h3>
+        <h3 class="text-lg font-semibold text-slate-800 mb-4">Ingin mendaftar di Unit lain?</h3>
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
           <a href="{{ route('home') }}" class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-600 hover:to-blue-600 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
             </svg>
             Daftar Unit Lain
-          </a>
-          <a href="tel:+62431123456" class="inline-flex items-center justify-center gap-2 bg-white border-2 border-emerald-500 text-emerald-600 hover:bg-emerald-50 font-semibold px-6 py-3 rounded-xl transition-all duration-300">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-            </svg>
-            Hubungi Kami
           </a>
         </div>
       </div>
