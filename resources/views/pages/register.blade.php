@@ -258,7 +258,7 @@
               </div>
               <input
                 type="text"
-                id="registration_code"
+                id="registration_code" name="registration_code"
                 registration_code="registration_code"
                 value="{{ old('registration_code') }}"
                 class="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors bg-white/50 backdrop-blur-sm @error('registration_code') border-red-500 focus:border-red-500 focus:ring-red-500 @enderror"
