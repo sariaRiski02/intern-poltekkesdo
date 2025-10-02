@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\User;
+use App\Models\visitor;
 use App\Models\activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -76,10 +77,10 @@ class AdminProfilController extends Controller
 
         // log activity
         activity::create([
-            'activity' => 'update',
-            'description' => 'update profil',
-            'name' => Auth::user()->admin->fullname ?? request()->ip(),
-            'visitor_id' => Auth::id() ?? null,
+            'activity' => 'create',
+            'description' => 'mendaftar lamaran magang',
+            'name' => Auth::user()->intern->fullname ?? request()->ip(),
+            'visitor_id' => visitor::where('ip', request()->ip())->first()->id ?? null,
         ]);
 
         return redirect()->back()->with('info', 'Tidak ada perubahan data yang dilakukan.');

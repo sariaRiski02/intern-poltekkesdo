@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Str;
+use App\Models\visitor;
 use App\Models\activity;
 use App\Models\department;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -57,10 +58,10 @@ class AdminDepartmentController extends Controller
 
         // log activity
         activity::create([
-            'activity' => 'update',
-            'description' => 'Admin mengedit department ' . $department->name,
-            'name' => Auth::user()->admin->fullname ?? request()->ip(),
-            'visitor_id' => Auth::id() ?? null,
+            'activity' => 'create',
+            'description' => 'mendaftar lamaran magang',
+            'name' => Auth::user()->intern->fullname ?? request()->ip(),
+            'visitor_id' => visitor::where('ip', request()->ip())->get()->id ?? null,
         ]);
 
 
@@ -74,10 +75,10 @@ class AdminDepartmentController extends Controller
 
         // log activity
         activity::create([
-            'activity' => 'delete',
-            'description' => 'Admin menghapus department ' . $department->name,
-            'name' => Auth::user()->admin->fullname ?? request()->ip(),
-            'visitor_id' => Auth::id() ?? null,
+            'activity' => 'create',
+            'description' => 'mendaftar lamaran magang',
+            'name' => Auth::user()->intern->fullname ?? request()->ip(),
+            'visitor_id' => visitor::where('ip', request()->ip())->get()->id ?? null,
         ]);
 
         return redirect()->route('admin.department');
@@ -119,9 +120,9 @@ class AdminDepartmentController extends Controller
         // log activity
         activity::create([
             'activity' => 'create',
-            'description' => 'Admin menambahkan department ' . $department->name,
-            'name' => Auth::user()->admin->fullname ?? request()->ip(),
-            'visitor_id' => Auth::id() ?? null,
+            'description' => 'mendaftar lamaran magang',
+            'name' => Auth::user()->intern->fullname ?? request()->ip(),
+            'visitor_id' => visitor::where('ip', request()->ip())->first()->id ?? null,
         ]);
 
         return redirect()->route('admin.department');

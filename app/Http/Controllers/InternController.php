@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\intern;
 use App\Models\activity;
 use App\Models\department;
+use App\Models\visitor;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -123,9 +124,9 @@ class InternController extends Controller
         // log activity
         activity::create([
             'activity' => 'create',
-            'description' => 'menambahkan lamaran magang baru',
-            'name' => Auth::user()->admin->fullname ?? request()->ip(),
-            'visitor_id' => Auth::id() ?? null,
+            'description' => 'mendaftar lamaran magang',
+            'name' => Auth::user()->intern->fullname ?? request()->ip(),
+            'visitor_id' => visitor::where('ip', request()->ip())->first()->id ?? null,
         ]);
 
         return redirect()->route('announcement');

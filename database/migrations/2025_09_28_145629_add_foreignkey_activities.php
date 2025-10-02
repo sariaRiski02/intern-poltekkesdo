@@ -22,7 +22,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('activities', function (Blueprint $table) {
-            //
+            // Hapus foreign key constraint dulu
+            $table->dropForeign(['visitor_id']);
+            // Hapus kolom visitor_id
+            $table->dropColumn('visitor_id');
         });
     }
 };

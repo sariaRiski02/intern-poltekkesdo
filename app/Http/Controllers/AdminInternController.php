@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\docs;
 use App\Models\intern;
+use App\Models\visitor;
 use App\Models\activity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -65,10 +66,10 @@ class AdminInternController extends Controller
 
         // log activity
         activity::create([
-            'activity' => 'update',
-            'description' => 'update status peserta',
-            'name' => Auth::user()->admin->fullname ?? request()->ip(),
-            'visitor_id' => Auth::id() ?? null,
+            'activity' => 'create',
+            'description' => 'mendaftar lamaran magang',
+            'name' => Auth::user()->intern->fullname ?? request()->ip(),
+            'visitor_id' => visitor::where('ip', request()->ip())->first()->id ?? null,
         ]);
 
         return redirect(Storage::url($path));

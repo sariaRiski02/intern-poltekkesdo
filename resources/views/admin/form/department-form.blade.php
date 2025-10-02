@@ -21,10 +21,10 @@
                     </svg>
                 </div>
                 <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent mb-4 leading-tight">
-                    Form Department
+                    Form Unit
                 </h1>
                 <p class="text-slate-600 text-xl max-w-2xl mx-auto leading-relaxed">
-                    Buat atau perbarui data department beserta admin penanggung jawab.
+                    Buat atau perbarui data unit beserta admin penanggung jawab.
                 </p>
             </div>
 
@@ -62,7 +62,7 @@
                         <!-- Nama -->
                         <div>
                             <label for="name" class="block text-sm font-medium text-slate-700 mb-2">
-                                Nama Department <span class="text-red-500">*</span>
+                                Nama Unit <span class="text-red-500">*</span>
                             </label>
                             <div class="relative group">
                                 <input type="text" id="name" name="name" value="{{ $department->name ?? '' }}" required
