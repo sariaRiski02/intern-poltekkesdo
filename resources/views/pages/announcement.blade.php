@@ -66,7 +66,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold text-red-700">Departemen Keperawatan</h3>
+                    <h3 class="text-2xl font-bold text-red-700">Unit {{ $doc->department->name }}</h3>
                     <div class="flex items-center gap-2 mt-1">
                     <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold">❌ DITOLAK</span>
 
@@ -90,7 +90,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold text-yellow-700">Departemen Farmasi</h3>
+                    <h3 class="text-2xl font-bold text-yellow-700">Unit {{ $doc->department->name }}</h3>
                     <div class="flex items-center gap-2 mt-1">
                     <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold">⏳ SEDANG DIPROSES</span>
 
@@ -111,7 +111,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold text-purple-700">Departemen Teknologi Laboratorium Medis</h3>
+                    <h3 class="text-2xl font-bold text-purple-700">Unit {{ $doc->department->name }}</h3>
                     <div class="flex items-center gap-2 mt-1">
                     <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-semibold">🎓 SELESAI</span>
                     <span class="text-slate-500 text-sm">Diselesaikan pada 15 Agustus 2025</span>
