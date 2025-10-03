@@ -78,7 +78,7 @@ class AdminDepartmentController extends Controller
             'activity' => 'create',
             'description' => 'mendaftar lamaran magang',
             'name' => Auth::user()->admin->fullname ?? request()->ip(),
-            'visitor_id' => visitor::where('ip', request()->ip())->get()->id ?? null,
+            'visitor_id' => visitor::where('ip', request()->ip())->first()->id ?? null,
         ]);
 
         return redirect()->route('admin.department');

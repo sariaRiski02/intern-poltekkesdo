@@ -19,6 +19,11 @@ class InternController extends Controller
 {
     public function index(department $department)
     {
+
+        if (Auth::check() && $department->intern->first()->user->id == Auth::id()) {
+            return redirect()->route('home');
+        }
+
         // Set locale to Indonesian
         App::setLocale('id');
         return view('pages.form', compact('department'));

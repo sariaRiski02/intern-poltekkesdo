@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\department;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +17,10 @@ class GuestController extends Controller
 
     public function detail(department $department)
     {
-
-        // if(Auth::check() && Auth::user()->intern)
-        return view('pages.detail', compact('department'));
+        $registered = false;
+        if (Auth::check() && $department->intern->first()->user->id == Auth::id()) {
+            $registered = true;
+        }
+        return view('pages.detail', compact('department', 'registered'));
     }
 }

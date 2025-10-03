@@ -30,6 +30,7 @@ class AdminInternController extends Controller
     {
         $docs->load('intern.user', 'department');
         $passwordManual = $docs->intern->user->password_manual;
+        dd($passwordManual);
         return view('admin.detail-intern', compact('docs', 'passwordManual'));
     }
 

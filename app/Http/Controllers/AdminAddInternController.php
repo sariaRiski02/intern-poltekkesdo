@@ -38,6 +38,7 @@ class AdminAddInternController extends Controller
         $passwordPlain = Str::lower($request->fullname) . random_int(100, 999);
         $passwordEnskript = bcrypt($passwordPlain); // Default password
 
+
         $user = User::create([
             'name' => $request->fullname,
             'email' => $request->email,
