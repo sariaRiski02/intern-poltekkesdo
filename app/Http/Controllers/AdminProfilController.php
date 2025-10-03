@@ -72,6 +72,7 @@ class AdminProfilController extends Controller
             $admin->save();
 
             $changesList = implode(', ', $changes);
+
             return redirect()->back()->with('success', "Profil berhasil diperbarui");
         }
 
@@ -79,7 +80,7 @@ class AdminProfilController extends Controller
         activity::create([
             'activity' => 'create',
             'description' => 'mendaftar lamaran magang',
-            'name' => Auth::user()->intern->fullname ?? request()->ip(),
+            'name' => Auth::user()->admin->fullname ?? request()->ip(),
             'visitor_id' => visitor::where('ip', request()->ip())->first()->id ?? null,
         ]);
 

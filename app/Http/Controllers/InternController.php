@@ -26,7 +26,6 @@ class InternController extends Controller
 
     public function internStore(Request $request, department $department)
     {
-
         // Set locale to Indonesian for validation messages
         App::setLocale('id');
 
@@ -68,7 +67,6 @@ class InternController extends Controller
             'surat_pengajuan.required' => 'Surat pengajuan wajib diunggah.',
             'surat_pengajuan.mimes' => 'Surat pengajuan harus berformat PDF, DOC, atau DOCX.',
         ]);
-
 
         $intern = new intern();
         $intern->user_id = optional(Auth::user())->id ?? null;
@@ -128,7 +126,6 @@ class InternController extends Controller
             'name' => Auth::user()->intern->fullname ?? request()->ip(),
             'visitor_id' => visitor::where('ip', request()->ip())->first()->id ?? null,
         ]);
-
         return redirect()->route('announcement');
     }
 

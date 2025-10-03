@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\admin;
 
+use App\Models\visitor;
 use App\Models\activity;
 use Illuminate\Http\Request;
 use App\Services\AuthService;
@@ -38,6 +39,13 @@ class AuthController extends Controller
             'password' => 'required|min:6',
         ]);
 
+        // log activity
+        activity::create([
+            'activity' => 'Login',
+            'description' => 'Login sebagai admin',
+            'name' => Auth::user()->admin->fullname ?? request()->ip(),
+            'visitor_id' => visitor::where('ip', request()->ip())->first()->id ?? null,
+        ]);
 
 
         // cek if email is nip
@@ -72,6 +80,14 @@ class AuthController extends Controller
         $request->validate([
             'username' => 'required|email',
             'password' => 'required|min:6',
+        ]);
+
+        // log activity
+        activity::create([
+            'activity' => 'Login',
+            'description' => 'Login sebagai peserta',
+            'name' => Auth::user()->intern->fullname ?? request()->ip(),
+            'visitor_id' => visitor::where('ip', request()->ip())->first()->id ?? null,
         ]);
 
         $credentials = $request->only('username', 'password');
@@ -112,6 +128,15 @@ class AuthController extends Controller
             'registration_code' => 'required|string',
         ]);
 
+
+        // log activity
+        activity::create([
+            'activity' => 'Register',
+            'description' => 'mendaftar sebagai admin',
+            'name' => Auth::user()->admin->fullname ?? request()->ip(),
+            'visitor_id' => visitor::where('ip', request()->ip())->first()->id ?? null,
+        ]);
+
         if ($request->registration_code != ENV('REGISTRATION_CODE')) {
             return redirect()->beck()->withErrors([
                 'error' => 'kode registrasi salah, silahkan coba lagi'
@@ -130,6 +155,13 @@ class AuthController extends Controller
             'password' => 'required|confirmed|min:6',
         ]);
 
+        // log activity
+        activity::create([
+            'activity' => 'Register',
+            'description' => 'Register sebagai peserta',
+            'name' => Auth::user()->intern->fullname ?? request()->ip(),
+            'visitor_id' => visitor::where('ip', request()->ip())->first()->id ?? null,
+        ]);
         return $this->authService->registerIntern($request);
     }
 

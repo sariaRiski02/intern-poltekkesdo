@@ -68,7 +68,7 @@ class AdminInternController extends Controller
         activity::create([
             'activity' => 'create',
             'description' => 'mendaftar lamaran magang',
-            'name' => Auth::user()->intern->fullname ?? request()->ip(),
+            'name' => Auth::user()->admin->fullname ?? request()->ip(),
             'visitor_id' => visitor::where('ip', request()->ip())->first()->id ?? null,
         ]);
 

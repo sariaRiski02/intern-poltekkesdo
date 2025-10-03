@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\intern;
+use App\Models\visitor;
 use App\Models\activity;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -76,7 +77,7 @@ class AdminAddInternController extends Controller
             'activity' => 'Add',
             'description' => 'menambahkan pesarta baru secara manual',
             'name' => Auth::user()->admin->fullname ?? request()->ip(),
-            'visitor_id' => Auth::id() ?? null,
+            'visitor_id' => visitor::where('ip', request()->ip())->first()->id ?? null,
         ]);
 
 
