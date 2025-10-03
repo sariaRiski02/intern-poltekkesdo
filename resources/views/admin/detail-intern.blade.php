@@ -125,7 +125,7 @@
               </div>
               @if($passwordManual)
               <div class="flex flex-col">
-                <span class="text-sm font-medium text-gray-500 mb-1">Password Sementara</span>
+                <span class="text-sm font-medium text-gray-500 mb-1">Password Manual</span>
                 <span class="text-gray-900 font-mono">{{ $passwordManual ?? '-' }}</span>
               </div>
               @endif
