@@ -19,8 +19,6 @@ Route::middleware(loggedInMiddleware::class)->prefix('admin')->group(function ()
 });
 
 
-
-
 Route::middleware([AdminMiddleware::class])->prefix('admin')->group(function () {
     Route::get('/', fn() => redirect()->route('admin.dashboard'));
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');

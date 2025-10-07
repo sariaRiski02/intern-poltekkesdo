@@ -118,10 +118,10 @@ class InternController extends Controller
         // simpan transkrip
         if ($request->has('transkrip')) {
             $transkrip = $request->file('transkrip')->store(
-                'documents/transkript',
+                'documents/transcript',
                 'public'
             );
-            $docs->$transkrip = $transkrip;
+            $docs->transcript = $transkrip;
         }
         $docs->save();
 

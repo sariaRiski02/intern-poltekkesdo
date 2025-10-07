@@ -58,7 +58,16 @@ class AdminInternController extends Controller
             ->orWhere('application_letter', $file)
             ->firstOrFail();
 
-        $path = $docs->transcript ?? $docs->cv ?? $docs->application_letter;
+        $path = '';
+        if($docs->application_letter == $file){
+            $path = $docs->application_letter;
+        }elseif($docs->cv == $file){
+            $path = $docs->cv;
+        }elseif($docs->transcript == $file){
+            $path = $docs->transcript;
+        }
+        
+        
 
         if (!Storage::disk('public')->exists($path)) {
             return redirect()->back()->with('error', 'File Belum Diunggah');
