@@ -20,7 +20,8 @@ class InternController extends Controller
     public function index(department $department)
     {
 
-        if (Auth::check() && $department->intern->first()->user->id == Auth::id()) {
+        
+        if (Auth::check() && $department->intern->first()?->user?->id == Auth::id()) {
             return redirect()->route('home');
         }
 
@@ -137,8 +138,12 @@ class InternController extends Controller
     public function announcement()
     {
         $user = User::where('id', Auth::id())->first()->intern;
+        
+        $docs = false;
+        if(is_null($user)){
+            return view('pages.announcement', compact('docs'));
+        }
         $docs = $user->docs()->get();
-
         return view('pages.announcement', compact('docs'));
     }
 }

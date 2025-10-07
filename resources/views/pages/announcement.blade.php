@@ -24,6 +24,49 @@
     <!-- Status Applications -->
     <div class="max-w-5xl mx-auto space-y-6">
 
+    @if(!$docs)
+      <div class="flex justify-center items-center min-h-[60vh] bg-gradient-to-br from-emerald-50 via-white to-sky-50">
+        <div
+          class="max-w-3xl w-full bg-white/90 border border-emerald-100 rounded-3xl shadow-2xl p-12 text-center backdrop-blur-sm">
+
+          <!-- Icon / Ilustrasi -->
+          <div class="mb-8">
+            <div
+              class="mx-auto w-28 h-28 rounded-full bg-gradient-to-br from-emerald-500 to-sky-500 flex items-center justify-center shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 text-white" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M9 17v-6m6 6V7M4 21h16M4 10h16M10 3h4" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Judul -->
+          <h2 class="text-3xl md:text-4xl font-bold text-emerald-700 mb-4">
+            Belum Ada Unit Magang yang Didaftarkan
+          </h2>
+
+          <!-- Deskripsi -->
+          <p class="text-gray-600 text-lg leading-relaxed mb-8">
+            Saat ini belum ada data unit magang yang anda daftar.<br>
+            Silahkan mendaftar unit magang baru.
+          </p>
+
+          <!-- Tombol Aksi -->
+          <a href="{{ route('contact') }}"
+            class="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-sky-600 hover:from-emerald-700 hover:to-sky-700 text-white font-semibold px-8 py-4 rounded-full shadow-md transition-all duration-300 hover:scale-105">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M14.752 11.168l-4.586-2.65A1 1 0 009 9.36v5.28a1 1 0 001.166.842l4.586-2.65a1 1 0 000-1.724z" />
+            </svg>
+            Hubungi Kami
+          </a>
+        </div>
+      </div>
+    @else
+
+
     @foreach ($docs as $doc)
 
         @if($doc->status == 'diterima')
@@ -133,6 +176,7 @@
         @endif
     @endforeach
 
+    @endif
       <!-- Action Buttons -->
       <div class="text-center bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-slate-100" data-aos="fade-up" data-aos-delay="600">
         <h3 class="text-lg font-semibold text-slate-800 mb-4">Ingin mendaftar di Unit lain?</h3>

@@ -138,7 +138,7 @@ class AuthController extends Controller
         ]);
 
         if ($request->registration_code != ENV('REGISTRATION_CODE')) {
-            return redirect()->beck()->withErrors([
+            return redirect()->back()->withErrors([
                 'error' => 'kode registrasi salah, silahkan coba lagi'
             ]);
         }

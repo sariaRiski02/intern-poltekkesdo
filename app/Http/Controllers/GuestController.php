@@ -18,7 +18,7 @@ class GuestController extends Controller
     public function detail(department $department)
     {
         $registered = false;
-        if (Auth::check() && $department->intern->first()->user->id == Auth::id()) {
+        if (Auth::check() && $department->intern->first()?->user?->id === Auth::id()) {
             $registered = true;
         }
         return view('pages.detail', compact('department', 'registered'));
