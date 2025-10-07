@@ -99,7 +99,7 @@ class AdminDepartmentController extends Controller
             'desc' => 'required|string',
         ]);
 
-        $slug = Str::slug($request->name);
+        $slug = Str::slug($request->name) . "-" . Str::uuid();
         $department = department::create([
             'name' => $request->name,
             'slug' => $slug,

@@ -137,13 +137,16 @@ class InternController extends Controller
 
     public function announcement()
     {
-        $user = User::where('id', Auth::id())->first()->intern;
-        
+        $user = User::where('id', Auth::id())->first()->intern()->get();
         $docs = false;
-        if(is_null($user)){
+
+        if(is_null($user) || $user->isEmpty()){
             return view('pages.announcement', compact('docs'));
         }
-        $docs = $user->docs()->get();
+        $docs = $user->flatMap->docs;
+        $docs = $docs->filter(function($doc){
+            return $doc->department && $doc->department->is_active;
+        });
         return view('pages.announcement', compact('docs'));
     }
 }
