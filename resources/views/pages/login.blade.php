@@ -17,7 +17,7 @@
                 <div class="flex justify-center mb-6">
                     <div class="relative">
                         <img src="/images/logo.png" alt="Logo Kemenkes" class="h-16 w-16 object-contain" />
-                        <div class="absolute -inset-1 bg-gradient-to-r from-emerald-400 to-blue-400 rounded-full blur opacity-25"></div>
+                        
                     </div>
                 </div>
                 <h1 class="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent mb-2">

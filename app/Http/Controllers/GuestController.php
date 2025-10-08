@@ -17,10 +17,11 @@ class GuestController extends Controller
 
     public function detail(department $department)
     {
-        $registered = false;
-        if (Auth::check() && $department->intern->first()?->user?->id === Auth::id()) {
-            $registered = true;
-        }
+        
+        $check = Auth::user()?->intern()?->first()?->departments()->get()->where('id', $department->id)->first()?->id;
+        $registered = Auth::check() && $department->id === $check;
+            
+        
         return view('pages.detail', compact('department', 'registered'));
     }
 }

@@ -27,11 +27,11 @@ class AdminAddInternController extends Controller
             'no_hp' => "nullable|string|max:20",
             'date_start' => "nullable|date",
             'date_end' => "nullable|date|after_or_equal:date_start",
-            'application_letter' => "nullable|file|mimes:pdf|max:2048",
-            'cv' => "nullable|file|mimes:pdf|max:2048",
-            'transcript' => "nullable|file|mimes:pdf|max:2048",
+            'application_letter' => "nullable|file|mimes:pdf|max:5120",
+            'cv' => "nullable|file|mimes:pdf|max:5120",
+            'transcript' => "nullable|file|mimes:pdf|max:5120",
+            'departmetn_id' => 'string'
         ]);
-
 
 
         // Create user
