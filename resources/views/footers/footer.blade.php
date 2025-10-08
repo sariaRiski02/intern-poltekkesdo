@@ -20,8 +20,7 @@
             <ul class="space-y-2 text-slate-300">
               <li><a href="{{route('home')}}" class="hover:text-emerald-400 transition-colors">Beranda</a></li>
               @auth
-              <li><a href="{{ route('announcement') }}" class="hover:text-emerald-400 transition-colors">Pengumuman</a></li>
-
+                <li><a href="{{ route('announcement') }}" class="hover:text-emerald-400 transition-colors">Pengumuman</a></li>
               @endauth
               <li><a href="{{ route('about') }}" class="hover:text-emerald-400 transition-colors">Tentang</a></li>
               <li><a href="{{ route('contact') }}" class="hover:text-emerald-400 transition-colors">Kontak</a></li>
