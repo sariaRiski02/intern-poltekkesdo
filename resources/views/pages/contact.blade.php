@@ -23,7 +23,7 @@
 
     <div class="max-w-6xl mx-auto">
       <!-- Contact Info Cards -->
-      <div class="grid md:grid-cols-3 gap-8 mb-12">
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
         <!-- Email -->
         <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-emerald-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 text-center">
           <div class="w-16 h-16 bg-gradient-to-r from-red-500 to-red-600 rounded-xl flex items-center justify-center mx-auto mb-6">
@@ -39,7 +39,7 @@
         </div>
 
         <!-- Phone -->
-        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-blue-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 text-center">
+        <!-- <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-blue-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 text-center">
           <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-xl flex items-center justify-center mx-auto mb-6">
             <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
@@ -50,7 +50,7 @@
           <a href="tel:+62431123456" class="text-green-600 hover:text-green-700 font-semibold transition-colors">
             +62 431 123 456
           </a>
-        </div>
+        </div> -->
 
         <!-- Address -->
         <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-emerald-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 text-center">
@@ -74,9 +74,9 @@
         <h3 class="text-3xl font-bold text-slate-800 mb-4">Ikuti Media Sosial Kami</h3>
         <p class="text-lg text-slate-600 mb-8">Dapatkan update terbaru dan informasi menarik lainnya</p>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 max-w-4xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-4xl mx-auto">
           <!-- Instagram -->
-          <a href="https://instagram.com/poltekkesmanado" target="_blank" class="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-pink-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 hover:border-pink-300">
+          <a href="https://www.instagram.com/polkesmanado/" target="_blank" class="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-pink-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 hover:border-pink-300">
             <div class="w-14 h-14 bg-gradient-to-r from-pink-500 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.618 5.367 11.986 11.988 11.986s11.987-5.368 11.987-11.986C24.004 5.367 18.635.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.33-1.295C4.198 14.827 3.762 13.756 3.762 12.017s.436-2.81 1.357-3.676c.882-.805 2.033-1.295 3.33-1.295s2.448.49 3.33 1.295c.921.866 1.357 1.937 1.357 3.676s-.436 2.81-1.357 3.676c-.882.805-2.033 1.295-3.33 1.295zm7.117 0c-1.297 0-2.448-.49-3.33-1.295-.921-.866-1.357-1.937-1.357-3.676s.436-2.81 1.357-3.676c.882-.805 2.033-1.295 3.33-1.295s2.448.49 3.33 1.295c.921.866 1.357 1.937 1.357 3.676s-.436 2.81-1.357 3.676c-.882.805-2.033 1.295-3.33 1.295z"/>
@@ -98,7 +98,7 @@
           </a>
 
           <!-- YouTube -->
-          <a href="https://youtube.com/@poltekkesmanado" target="_blank" class="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-red-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 hover:border-red-300">
+          <a href="https://www.youtube.com/@polkesdo" target="_blank" class="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-red-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 hover:border-red-300">
             <div class="w-14 h-14 bg-gradient-to-r from-red-600 to-red-700 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
@@ -131,7 +131,7 @@
           </a>
 
           <!-- WhatsApp -->
-          <a href="https://wa.me/6243112345678" target="_blank" class="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-green-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 hover:border-green-300">
+          <!-- <a href="https://wa.me/6243112345678" target="_blank" class="group bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-green-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 hover:border-green-300">
             <div class="w-14 h-14 bg-gradient-to-r from-green-500 to-green-600 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.520-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
@@ -139,7 +139,7 @@
             </div>
             <h4 class="font-bold text-slate-800 text-sm">WhatsApp</h4>
             <p class="text-xs text-slate-600 mt-1">Chat Langsung</p>
-          </a>
+          </a> -->
         </div>
       </div>
 
