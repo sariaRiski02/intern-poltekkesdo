@@ -15,7 +15,7 @@ class AdminController extends Controller
     public function dashboard()
     {
         $peserta = intern::count();
-        $department = department::count();
+        $department = department::where('is_active', true)->get()->count();
         $visitor = visitor::count();
         $docs = docs::with('intern', 'department');
         $interns = $docs->latest()->take(5)->get();

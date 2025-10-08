@@ -13,23 +13,32 @@
     </div>
 
     <!-- Stats Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
         <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
             <p class="text-sm font-medium text-gray-500">Total Peserta</p>
             <p class="text-3xl font-bold text-gray-900">{{ $CountPeserta }}</p>
         </div>
+        
+        <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
+            <p class="text-sm font-medium text-gray-500">Total Pendaftar</p>
+            <p class="text-3xl font-bold text-gray-900">{{ $AllDocs->count() }}</p>
+        </div>
+        
         <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
             <p class="text-sm font-medium text-gray-500">Pending</p>
             <p class="text-3xl font-bold text-yellow-600">{{ $AllDocs->where('status', 'pending')->count() }}</p>
         </div>
+        
         <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
             <p class="text-sm font-medium text-gray-500">Diterima</p>
             <p class="text-3xl font-bold text-green-600">{{ $AllDocs->where('status', 'diterima')->count() }}</p>
         </div>
+        
         <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
             <p class="text-sm font-medium text-gray-500">Ditolak</p>
             <p class="text-3xl font-bold text-red-600">{{ $AllDocs->where('status', 'ditolak')->count() }}</p>
         </div>
+        
         <div class="bg-white p-6 rounded-2xl shadow border border-gray-100">
             <p class="text-sm font-medium text-gray-500">Selesai</p>
             <p class="text-3xl font-bold text-blue-600">{{ $AllDocs->where('status', 'selesai')->count() }}</p>

@@ -11,7 +11,7 @@
                 <p class="text-sm text-slate-400">Kementerian Kesehatan RI</p>
               </div>
             </div>
-            <p class="text-slate-300 max-w-md">Program magang terbaik di bidang kesehatan dengan fasilitas modern dan bimbingan profesional.</p>
+            <p class="text-slate-300 max-w-md">Program magang dengan bimbingan terbaik.</p>
           </div>
 
           <!-- Quick Links -->
@@ -34,7 +34,6 @@
             <ul class="space-y-2 text-slate-300">
               <li>info@poltekkes-manado.ac.id</li>
               <li>@poltekkesmanado</li>
-              <li>+62 431 123456</li>
             </ul>
           </div>
         </div>

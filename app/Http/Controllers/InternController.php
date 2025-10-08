@@ -118,10 +118,10 @@ class InternController extends Controller
         // simpan transkrip
         if ($request->has('transkrip')) {
             $transkrip = $request->file('transkrip')->store(
-                'documents/transkript',
+                'documents/transcript',
                 'public'
             );
-            $docs->$transkrip = $transkrip;
+            $docs->transcript = $transkrip;
         }
         $docs->save();
 
@@ -137,13 +137,16 @@ class InternController extends Controller
 
     public function announcement()
     {
-        $user = User::where('id', Auth::id())->first()->intern;
-        
+        $user = User::where('id', Auth::id())->first()->intern()->get();
         $docs = false;
-        if(is_null($user)){
+
+        if(is_null($user) || $user->isEmpty()){
             return view('pages.announcement', compact('docs'));
         }
-        $docs = $user->docs()->get();
+        $docs = $user->flatMap->docs;
+        $docs = $docs->filter(function($doc){
+            return $doc->department && $doc->department->is_active;
+        });
         return view('pages.announcement', compact('docs'));
     }
 }
