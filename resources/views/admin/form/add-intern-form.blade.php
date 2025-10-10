@@ -166,7 +166,7 @@
                                 <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div class="space-y-2">
+                    <div class="space-y-2">
                             <label class="block text-sm font-semibold text-gray-700">Tanggal Selesai *</label>
                             <input type="date" name="date_end" value="{{ old('date_end') }}"
                                 class="w-full px-4 py-3 border-2 @error('date_end') border-red-500 @else border-gray-200 @enderror rounded-xl shadow-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200"

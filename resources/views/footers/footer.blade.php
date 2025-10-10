@@ -38,7 +38,7 @@
         </div>
 
         <div class="border-t border-slate-700 pt-8 text-center">
-           <p class="text-slate-400">&copy; Created by Internship Students of University of Sam Ratulangi Manado</p>
+           <p class="text-slate-400">&copy; Created by the IT Unit of Poltekkes Kemenkes Manado</p>
         </div>
       </div>
     </footer>
