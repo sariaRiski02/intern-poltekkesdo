@@ -202,8 +202,8 @@
               <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
             @enderror
             <div class="mt-2">
-              <div class="text-xs text-slate-500">
-                Password minimal 8 karakter
+              <div class="text-xs text-slate-500"> 
+                Password minimal 6 karakter
               </div>
             </div>
           </div>

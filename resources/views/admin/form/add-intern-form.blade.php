@@ -255,4 +255,37 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const maxSize = 5 * 1024 * 1024; // 5MB dalam bytes
+    const inputs = document.querySelectorAll('input[type="file"]');
+
+    inputs.forEach(input => {
+        input.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            const errorId = `${e.target.name}-error`;
+
+            // hapus pesan error sebelumnya jika ada
+            let existingError = document.getElementById(errorId);
+            if (existingError) existingError.remove();
+
+            if (file && file.size > maxSize) {
+                // buat pesan error baru
+                const errorMessage = document.createElement('p');
+                errorMessage.id = errorId;
+                errorMessage.className = 'text-sm text-red-600 mt-1';
+                errorMessage.textContent = 'Ukuran file melebihi 5MB. Silakan pilih file yang lebih kecil.';
+
+                // tambahkan di bawah input
+                e.target.insertAdjacentElement('afterend', errorMessage);
+
+                // kosongkan input agar tidak bisa diupload
+                e.target.value = '';
+            }
+        });
+    });
+});
+</script>
+
 @endsection
