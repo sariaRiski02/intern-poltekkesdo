@@ -41,7 +41,8 @@
                     </svg>
                   </div>
                   <h3 class="text-lg font-bold text-{{$selected}}-700 mb-2">{{ $department->name }}</h3>
-                  <p class="text-slate-600 text-sm leading-relaxed mb-4">{{ Str::words($department->head_desc, 5, '...') }}</p>
+                  <p class="text-slate-600 text-md leading-relaxed mb-4">{{ Str::words($department->head_desc, 5, '...') }}</p>
+                  <p class="text-slate-600 text-sm leading-relaxed mb-4">Jumlah Pendaftar: 5</p>
                 </div>
                 <a href="{{ route('detail', $department->slug) }}" class="w-full bg-gradient-to-r from-{{$selected}}-500 to-{{$selected}}-600 hover:from-{{$selected}}-600 hover:to-{{$selected}}-700 text-white px-4 py-3 rounded-xl font-semibold text-sm shadow-lg hover:shadow-xl transition-all duration-300 group-hover:scale-105 text-center block">
                     Lihat

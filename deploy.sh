@@ -1,6 +1,6 @@
 #!/bin/bash
 # ===========================================
-# Laravel Deployment Script - by Rizky
+# Laravel Deployment Script - by Rizky Saria
 # ===========================================
 
 echo "🚀 Starting Laravel Deployment..."

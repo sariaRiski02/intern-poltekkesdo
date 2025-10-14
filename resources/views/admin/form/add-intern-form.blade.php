@@ -166,7 +166,7 @@
                                 <p class="text-sm text-red-600 mt-1">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div class="space-y-2">
+                    <div class="space-y-2">
                             <label class="block text-sm font-semibold text-gray-700">Tanggal Selesai *</label>
                             <input type="date" name="date_end" value="{{ old('date_end') }}"
                                 class="w-full px-4 py-3 border-2 @error('date_end') border-red-500 @else border-gray-200 @enderror rounded-xl shadow-sm focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-200"
@@ -255,4 +255,37 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const maxSize = 5 * 1024 * 1024; // 5MB dalam bytes
+    const inputs = document.querySelectorAll('input[type="file"]');
+
+    inputs.forEach(input => {
+        input.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            const errorId = `${e.target.name}-error`;
+
+            // hapus pesan error sebelumnya jika ada
+            let existingError = document.getElementById(errorId);
+            if (existingError) existingError.remove();
+
+            if (file && file.size > maxSize) {
+                // buat pesan error baru
+                const errorMessage = document.createElement('p');
+                errorMessage.id = errorId;
+                errorMessage.className = 'text-sm text-red-600 mt-1';
+                errorMessage.textContent = 'Ukuran file melebihi 5MB. Silakan pilih file yang lebih kecil.';
+
+                // tambahkan di bawah input
+                e.target.insertAdjacentElement('afterend', errorMessage);
+
+                // kosongkan input agar tidak bisa diupload
+                e.target.value = '';
+            }
+        });
+    });
+});
+</script>
+
 @endsection
