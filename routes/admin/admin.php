@@ -50,4 +50,5 @@ Route::middleware([AdminMiddleware::class])->prefix('admin')->group(function () 
     Route::put('/profil', [AdminProfilController::class, 'update_profile'])->name('admin.profile-store');
 
     Route::post('/certificate/{docs:slug}', [AdminController::class, 'sertifikat'])->name('admin.sertifikat');
+    Route::get('/delete-certificate/{docs:slug}', [AdminController::class, 'delete_sertifikat'])->name('admin.delete-sertifikat');
 });

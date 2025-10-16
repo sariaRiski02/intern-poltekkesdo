@@ -71,4 +71,15 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Sertifikat berhasil diunggah.');
     }
+
+    public function delete_sertifikat(docs $docs)
+    {
+        if ($docs->certificate) {
+            Storage::delete($docs->certificate);
+            $docs->certificate = null;
+            $docs->save();
+        }
+
+        return redirect()->back()->with('success', 'Sertifikat berhasil dihapus.');
+    }
 }
