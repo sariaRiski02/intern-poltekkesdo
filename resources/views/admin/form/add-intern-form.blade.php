@@ -12,7 +12,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
                 </svg>
             </div>
-            <h1 class="text-4xl font-bold text-gray-900 mb-2">Tambah Peserta Magang</h1>
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">Tambah Peserta Program</h1>
             <p class="text-gray-600 text-lg">Isi form berikut untuk menambahkan peserta baru ke dalam sistem</p>
         </div>
 
@@ -154,7 +154,7 @@
                                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-gray-800">Periode Magang</h3>
+                        <h3 class="text-xl font-bold text-gray-800">Periode Program</h3>
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <div class="space-y-2">
@@ -190,9 +190,9 @@
                         <h3 class="text-xl font-bold text-gray-800">Upload Dokumen</h3>
                     </div>
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <!-- Surat Pengantar -->
+                        <!-- Surat Permohonan -->
                         <div class="space-y-3">
-                            <label class="block text-sm font-semibold text-gray-700">Surat Pengantar *</label>
+                            <label class="block text-sm font-semibold text-gray-700">Surat Permohonan *</label>
                             <input type="file" name="application_letter" accept=".pdf"
                                 class="w-full px-4 py-3 border-2 border-dashed @error('application_letter') border-red-500 @else border-purple-300 @enderror rounded-xl bg-white focus:ring-2 focus:ring-purple-200 transition-all duration-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-purple-100 file:text-purple-700 hover:file:bg-purple-200"
                                 required>

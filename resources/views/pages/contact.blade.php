@@ -17,7 +17,7 @@
       </h2>
       <div class="w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 mx-auto rounded-full mb-6"></div>
       <p class="text-lg text-slate-600 max-w-2xl mx-auto">
-        Terhubung dengan kami melalui berbagai platform media sosial dan dapatkan informasi terbaru tentang program magang.
+        Terhubung dengan kami melalui berbagai platform media sosial dan dapatkan informasi terbaru tentang program yang tersedia.
       </p>
     </div>
 
@@ -38,19 +38,6 @@
           </a>
         </div>
 
-        <!-- Phone -->
-        <!-- <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-blue-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 text-center">
-          <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-xl flex items-center justify-center mx-auto mb-6">
-            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold text-slate-800 mb-3">Telepon</h3>
-          <p class="text-slate-600 mb-4">Hubungi kami langsung</p>
-          <a href="tel:+62431123456" class="text-green-600 hover:text-green-700 font-semibold transition-colors">
-            +62 431 123 456
-          </a>
-        </div> -->
 
         <!-- Address -->
         <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-emerald-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 text-center">

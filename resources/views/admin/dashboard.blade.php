@@ -19,7 +19,7 @@
                             Selamat Datang, {{ Auth::user()->name }}! 👋
                         </h2>
                         <p class="text-emerald-100 text-sm md:text-base">
-                            Kelola dan pantau program magang Poltekkes Manado dengan mudah
+                            Kelola dan pantau program rekrutmen Poltekkes Kemenkes Manado dengan mudah
                         </p>
                     </div>
                     <div class="hidden md:block">

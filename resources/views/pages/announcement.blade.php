@@ -17,7 +17,7 @@
         📋 Status Pendaftaran Anda
       </h1>
       <p class="text-slate-600 text-lg mb-2">
-        Lihat status pendaftaran magang Anda di berbagai Unit
+        Lihat status pendaftaran anda di berbagai program yang di sediakan.
       </p>
     </div>
 
@@ -43,13 +43,13 @@
 
           <!-- Judul -->
           <h2 class="text-3xl md:text-4xl font-bold text-emerald-700 mb-4">
-            Belum Ada Unit Magang yang Didaftarkan
+            Belum Ada Program yang Didaftarkan
           </h2>
 
           <!-- Deskripsi -->
           <p class="text-gray-600 text-lg leading-relaxed mb-8">
-            Saat ini belum ada data unit magang yang anda daftar.<br>
-            Silahkan mendaftar unit magang baru.
+            Saat ini belum ada data program yang anda daftar.<br>
+            Silahkan mendaftar program baru bila tersedia.
           </p>
 
           <!-- Tombol Aksi -->
@@ -80,7 +80,7 @@
                 </div>
                 <div>
 
-                    <h3 class="text-2xl font-bold text-green-700">Unit {{ $doc->department->name }}</h3>
+                    <h3 class="text-2xl font-bold text-green-700">{{ $doc->department->name }}</h3>
                     <div class="flex items-center gap-2 mt-1">
                     <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">✅ DITERIMA</span>
 
@@ -133,7 +133,7 @@
                     </svg>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold text-yellow-700">Unit {{ $doc->department->name }}</h3>
+                    <h3 class="text-2xl font-bold text-yellow-700"> {{ $doc->department->name }}</h3>
                     <div class="flex items-center gap-2 mt-1">
                     <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-sm font-semibold">⏳ SEDANG DIPROSES</span>
 
@@ -154,15 +154,15 @@
                     </svg>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold text-purple-700">Unit {{ $doc->department->name }}</h3>
+                    <h3 class="text-2xl font-bold text-purple-700"> {{ $doc->department->name }}</h3>
                     <div class="flex items-center gap-2 mt-1">
                     <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-semibold">🎓 SELESAI</span>
-                    <span class="text-slate-500 text-sm">Diselesaikan pada 15 Agustus 2025</span>
+                    <!-- <span class="text-slate-500 text-sm">Diselesaikan pada 15 Agustus 2025</span> -->
                     </div>
                 </div>
                 </div>
                 <div class="bg-purple-100 rounded-xl p-4 border border-purple-200">
-                <h4 class="font-semibold text-purple-800 mb-2">🎉 Selamat! Anda telah menyelesaikan program magang</h4>
+                <h4 class="font-semibold text-purple-800 mb-2">🎉 Selamat! Anda telah menyelesaikan program {{ $doc->department->name }}</h4>
                 <p class="text-purple-700 text-sm mb-3">
                     <strong>Periode:</strong>
                     {{ $doc->date_start->translatedFormat('d F Y') }}
@@ -185,7 +185,7 @@
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
             </svg>
-            Daftar Unit Lain
+            Daftar Program Lain
           </a>
         </div>
       </div>

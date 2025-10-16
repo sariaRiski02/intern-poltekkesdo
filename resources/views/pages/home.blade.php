@@ -5,7 +5,7 @@
     <section class="py-12">
       <div class="container mx-auto px-6 text-center">
         <h1 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent pb-3">
-          Program Magang Poltekkes Manado
+          Program Rekrutmen Poltekkes Kemenkes Manado
         </h1>
         <p class="text-slate-600 text-lg">Kementerian Kesehatan Republik Indonesia</p>
       </div>

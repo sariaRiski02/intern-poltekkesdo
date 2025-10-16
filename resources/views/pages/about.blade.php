@@ -46,7 +46,7 @@
             <h3 class="text-2xl font-bold text-blue-700">Misi</h3>
           </div>
           <p class="text-slate-600 leading-relaxed text-lg">
-            Memberikan pendidikan dan pelatihan berkualitas tinggi melalui program magang yang menggabungkan teori dan praktik untuk menghasilkan tenaga kesehatan yang kompeten.
+            Memberikan pendidikan dan pelatihan berkualitas melalui program-program yang tersedia serta menggabungkan teori dan praktik untuk menghasilkan tenaga kerja yang kompeten.
           </p>
         </div>
       </div>

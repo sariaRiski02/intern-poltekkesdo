@@ -22,7 +22,7 @@
       }
     </script>
     @vite('resources/css/app.css')
-    <title>Detail Department - Elegant Dashboard</title>
+    <title>Detail Program - Elegant Dashboard</title>
   </head>
   <body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 min-h-screen font-inter">
 
@@ -39,8 +39,8 @@
           <div class="space-y-2">
             <div class="flex items-center gap-3">
               <div>
-                <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 tracking-tight">Detail Departemen</h1>
-                <p class="text-gray-600 mt-1 text-base lg:text-lg font-medium">Informasi komprehensif mengenai departemen</p>
+                <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 tracking-tight">Detail Program</h1>
+                <p class="text-gray-600 mt-1 text-base lg:text-lg font-medium">Informasi komprehensif mengenai program</p>
               </div>
             </div>
           </div>
@@ -69,7 +69,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
                   </svg>
                 </div>
-                Informasi Department
+                Informasi Program
               </h2>
               <p class="text-gray-500 mt-1 text-sm">Data lengkap dan terperinci</p>
             </div>
@@ -77,7 +77,7 @@
               <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="space-y-6">
                   <div class="p-4 rounded-2xl transition-all duration-300">
-                    <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">Nama Departemen</p>
+                    <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-1">Nama Program</p>
                     <p class="text-gray-900 font-bold text-lg">{{ $department->name }}</p>
                   </div>
 
@@ -119,7 +119,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                   </svg>
                 </div>
-                Statistik Department
+                Statistik Program
               </h2>
               <p class="text-gray-500 mt-1 text-sm">Rangkuman data dan aktivitas</p>
             </div>
@@ -133,7 +133,7 @@
                   </div>
                   <div>
                     <p class="text-gray-600 font-semibold text-sm uppercase tracking-wider">Total Pendaftar</p>
-                    <p class="text-gray-900 text-xs mt-1">Jumlah peserta magang terdaftar</p>
+                    <p class="text-gray-900 text-xs mt-1">Jumlah peserta rekrutmen terdaftar</p>
                   </div>
                 </div>
                 <div class="text-right">
