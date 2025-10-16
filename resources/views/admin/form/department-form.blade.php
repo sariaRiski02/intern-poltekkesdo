@@ -65,11 +65,14 @@
                                 Nama Program <span class="text-red-500">*</span>
                             </label>
                             <div class="relative group">
-                                <input type="text" id="name" name="name" value="{{ $department->name ?? '' }}" required
+                                <input type="text" id="name" name="name" value="{{ old('name', $department->name ?? '') }}" required
                                              placeholder="Contoh: Teknologi Informasi"
                                              class="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-400 transition-all duration-300 bg-white/70 backdrop-blur-sm hover:bg-white/90 hover:shadow-md placeholder-slate-400 group-hover:border-slate-300">
                                 <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                             </div>
+                            @error('name')
+                                <p class="text-sm text-red-500 mt-2">{{ $message }}</p>
+                            @enderror
                             <p class="text-xs text-slate-500 mt-1">Nama akan dipakai untuk identitas tampilan.</p>
                         </div>
 
@@ -78,9 +81,12 @@
                             <label for="head_desc" class="block text-sm font-medium text-slate-700 mb-2">
                                 Deskripsi Singkat
                             </label>
-                            <input type="text" id="head_desc" value="{{ $department->head_desc ?? '' }}" name="head_desc"
+                            <input type="text" id="head_desc" value="{{ old('head_desc', $department->head_desc ?? '') }}" name="head_desc"
                                          placeholder="Deskripsi Singkat"
                                          class="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-400 transition-all duration-300 bg-white/70 backdrop-blur-sm hover:bg-white/90 hover:shadow-md placeholder-slate-400">
+                            @error('head_desc')
+                                <p class="text-sm text-red-500 mt-2">{{ $message }}</p>
+                            @enderror
                         </div>
 
                         <!-- Persyaratan -->
@@ -93,7 +99,10 @@
                                                 class="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2
                                                 focus:ring-emerald-500/50 focus:border-emerald-400 transition-all duration-300
                                                 bg-white/70 backdrop-blur-sm hover:bg-white/90 hover:shadow-md
-                                                placeholder-slate-400 resize-none">{{ $requirments ?? '' }}</textarea>
+                                                placeholder-slate-400 resize-none">{{ old('requirements', $requirments ?? '') }}</textarea>
+                            @error('requirements')
+                                <p class="text-sm text-red-500 mt-2">{{ $message }}</p>
+                            @enderror
                             <p class="text-xs text-slate-500 mt-1">Pisahkan setiap persyaratan dengan tanda koma (,) jika lebih dari satu.</p>
                         </div>
 
@@ -107,8 +116,46 @@
                                                 class="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2
                                                 focus:ring-emerald-500/50 focus:border-emerald-400 transition-all duration-300
                                                 bg-white/70 backdrop-blur-sm hover:bg-white/90 hover:shadow-md
-                                                placeholder-slate-400 resize-none">{{ $department->desc ?? '' }}</textarea>
+                                                placeholder-slate-400 resize-none">{{ old('desc', $department->desc ?? '') }}</textarea>
+                            @error('desc')
+                                <p class="text-sm text-red-500 mt-2">{{ $message }}</p>
+                            @enderror
                         </div>
+
+                        <!-- Toggle Periode Waktu -->
+                        <section class="mt-6 border border-slate-200 rounded-2xl flex flex-col lg:flex-row justify-between gap-6 lg:gap-10 p-6 lg:p-10 items-start lg:items-center bg-white/70 backdrop-blur-sm">
+                            <label for="toggle" class="flex items-center cursor-pointer select-none">
+                                <div class="relative">
+                                    <!-- Hidden Checkbox -->
+                                    <input id="toggle" type="checkbox" class="sr-only peer" aria-describedby="toggle-status" />
+                                    <input type="hidden" name="is_periode" id="is_periode" value="0">
+                                    <!-- Track -->
+                                    <div
+                                        class="w-16 h-9 bg-slate-200 rounded-full shadow-inner
+                                        peer-checked:bg-gradient-to-r peer-checked:from-emerald-500 peer-checked:to-blue-500
+                                        peer-focus:ring-2 peer-focus:ring-emerald-300 transition-all duration-300 ease-in-out">
+                                    </div>
+
+                                    <!-- Knob -->
+                                    <div
+                                        class="absolute top-1 left-1 w-7 h-7 bg-white rounded-full shadow-md
+                                        transition-transform duration-300 ease-in-out peer-checked:translate-x-7
+                                        peer-checked:shadow-lg">
+                                    </div>
+                                </div>
+
+                                <!-- Label text -->
+                                <span class="ml-4 text-slate-800 font-medium text-sm sm:text-base leading-snug">
+                                    Aktifkan jika program mengizinkan periode diatur oleh peserta program
+                                </span>
+                            </label>
+
+                            <!-- Status -->
+                            <p id="toggle-status" class=" text-sm text-slate-600" aria-live="polite">
+                                Status: <strong id="status-text" class="text-slate-900">Mati</strong>
+                            </p>
+                        </section>
+
                     </div>
 
                     <!-- Actions -->
@@ -119,7 +166,7 @@
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                 </svg>
-                                Simpan Department
+                                Simpan Program
                             </button>
                         </div>
                     </div>
@@ -128,5 +175,24 @@
         </div>
     </div>
 </section>
+
+        <script>
+            const toggle = document.getElementById('toggle');
+            const statusText = document.getElementById('status-text');
+
+            toggle.addEventListener('change', () => {
+                if (toggle.checked) {
+                    document.getElementById('is_periode').value = '1';
+                    statusText.textContent = 'Aktif';
+                    statusText.classList.add('text-emerald-600');
+                    statusText.classList.remove('text-slate-900');
+                } else {
+                    document.getElementById('is_periode').value = '0';
+                    statusText.textContent = 'Mati';
+                    statusText.classList.add('text-slate-900');
+                    statusText.classList.remove('text-emerald-600');
+                }
+            });
+        </script>
 
 @endsection

@@ -17,8 +17,9 @@ return new class extends Migration
             $table->string('application_letter')->nullable(false);
             $table->string('transcript')->nullable();
             $table->string('cv')->nullable();
-            $table->date('date_start')->nullable(false);
-            $table->date('date_end')->nullable(false);
+            $table->date('date_start')->nullable();
+            $table->date('date_end')->nullable();
+            $table->string('certificate')->nullable();
             $table->enum('status', ['pending', 'rejected', 'accepted', 'completed'])->nullable(false);
             $table->foreignId('intern_id')->nullable()->constrained('interns')->onDelete('cascade');
             $table->timestamps();

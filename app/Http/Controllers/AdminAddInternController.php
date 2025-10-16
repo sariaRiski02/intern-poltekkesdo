@@ -16,6 +16,7 @@ class AdminAddInternController extends Controller
     public function add_intern_process(Request $request)
     {
 
+
         $request->validate([
             'fullname' => "required|string|max:255",
             'email' => "required|email|unique:users,email",

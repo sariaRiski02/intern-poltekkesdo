@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     @vite('resources/css/app.css')
-    <title>Detail Peserta Magang</title>
+    <title>Detail Peserta </title>
   </head>
   <body class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 min-h-screen">
 
@@ -22,8 +22,8 @@
             </a>
             <div class="border-l border-gray-200 pl-3 sm:pl-4 hidden sm:block"></div>
             <div>
-              <h1 class="text-2xl lg:text-3xl font-bold text-gray-900 tracking-tight">Detail Peserta Magang</h1>
-              <p class="text-gray-600 text-sm lg:text-base mt-1">Informasi lengkap calon peserta magang</p>
+              <h1 class="text-2xl lg:text-3xl font-bold text-gray-900 tracking-tight">Detail Peserta Program</h1>
+              <p class="text-gray-600 text-sm lg:text-base mt-1">Informasi lengkap calon peserta</p>
             </div>
           </div>
           <div class="flex items-center gap-3">
@@ -152,13 +152,14 @@
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
             <div class="text-center p-4 bg-emerald-50 rounded-xl border border-emerald-100">
 
-              <div class="text-2xl font-bold text-emerald-600">{{ $docs->date_start->format('d') }}</div>
-            <div class="text-sm text-emerald-600 font-medium">{{ $docs->date_start->format('F Y') }}</div>
+              <div class="text-2xl font-bold text-emerald-600">{{ $docs->date_start?->format('d') ?? '-' }}</div>
+            <div class="text-sm text-emerald-600 font-medium">{{ $docs->date_start?->format('F Y') ?? '-' }}</div>
               <div class="text-xs text-gray-600 mt-1">Tanggal Mulai</div>
             </div>
             <div class="text-center p-4 bg-blue-50 rounded-xl border border-blue-100">
-              <div class="text-2xl font-bold text-blue-600">{{ $docs->date_end->format('d') }}</div>
-              <div class="text-sm text-blue-600 font-medium">{{ $docs->date_end->format('F Y') }}</div>
+              <div class="text-2xl font-bold text-blue-600">{{ $docs->date_end?->format('d') ?? '-'}}</div>
+              <div class="text-sm text-blue-600 font-medium">{{ $docs->date_end?->format('F Y') ?? '-'}}</div>
+              {{-- @dd($docs->date_end->format('F Y')) --}}
               <div class="text-xs text-gray-600 mt-1">Tanggal Selesai</div>
             </div>
             <div class="text-center p-4 bg-purple-50 rounded-xl border border-purple-100">
@@ -169,9 +170,40 @@
               </div>
             </div>
           </div>
+
+
+          @if($docs->status == 'selesai')
+          <!-- input sertifikat -->
+          <form action="{{ route('admin.sertifikat',$docs->slug) }}" method="POST" enctype="multipart/form-data" class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300">
+            @csrf
+
+                <label for="cv" class="block text-sm font-medium text-slate-700 mb-2">
+                    Beri Sertifikat <span class="text-slate-400">(Opsional)</span>
+                </label>
+                <div class="relative">
+                    <input type="file" id="sertifikat" name="sertifikat" accept=".pdf,.doc,.docx,.jpg,.jpeg"
+                         class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 bg-white/50 backdrop-blur-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                    @error('sertifikat')
+                        <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+                <p class="text-xs text-slate-500 mt-2">Format: PDF,JPG,JPEG,PNG (Maksimal 5MB)</p>
+
+                <div class="flex justify-end">
+
+                    <button type="submit" class="flex items-center justify-center px-6 py-3 bg-purple-500 bg-gradient-to-r from-purple-500 to-emerald-600 text-white font-semibold rounded-xl hover:from-purple-600 hover:to-emerald-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-purple-500/25">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        Kirim
+                    </button>
+                </div>
+          </form>
+
+          @endif
         </div>
 
-        <!-- Dokumen & Actions -->
+        <!-- Dokumen -->
         <div class="space-y-6">
           <!-- Dokumen Card -->
           <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow duration-300">
@@ -249,6 +281,28 @@
                     </div>
                   </div>
                   <a href="{{ route('admin.document', $docs->transcript) }}" target="_blank" class="inline-flex items-center px-4 py-2 bg-purple-600 text-white text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors duration-200">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    Lihat
+                  </a>
+                </div>
+                @endif
+                @if($docs->certificate)
+                 <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100 hover:bg-gray-100 transition-colors duration-200">
+                  <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                      <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="font-medium text-gray-900">Sertifikat</div>
+
+                    </div>
+                  </div>
+                  <a href="{{ asset('storage/' . $docs->certificate) }}" target="_blank" class="inline-flex items-center px-4 py-2 bg-purple-600 text-white text-sm font-medium rounded-lg hover:bg-purple-700 transition-colors duration-200">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
@@ -393,7 +447,7 @@
                             Pending
                         </a>
 
-                        <a href="{{ route('admin.edit-intern-status', [$docs->slug, 'tolak']) }}" class="flex items-center justify-center px-6 py-3 bg-red-500 bg-gradient-to-r from-red-500 to-pink-600 text-white font-semibold rounded-xl hover:from-red-600 hover:to-pink-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-red-500/25">
+                        <a href="{{ route('admin.edit-intern-status', [$docs->slug, 'ditolak']) }}" class="flex items-center justify-center px-6 py-3 bg-red-500 bg-gradient-to-r from-red-500 to-pink-600 text-white font-semibold rounded-xl hover:from-red-600 hover:to-pink-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-red-500/25">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                             </svg>
@@ -420,7 +474,7 @@
               <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
-              Diajukan pada 15 September 2025
+              Silahkan Putuskan
             </div>
           </div>
         </div>
@@ -438,7 +492,19 @@
             text: '{{ session('error') }}',
         });
     </script>
-@endif
+    @endif
+
+    @if (session('success'))
+    alert('Success', '{{ session('success') }}', 'success');
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: '{{ session('success') }}',
+        });
+    </script>
+    @endif
 
   </body>
 </html>

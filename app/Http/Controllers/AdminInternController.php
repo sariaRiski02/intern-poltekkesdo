@@ -44,6 +44,18 @@ class AdminInternController extends Controller
 
         // Update the status
         $docs->status = $status;
+        if ($status == 'diterima') {
+            $docs->date_start = now();
+        }
+
+        if ($status == 'selesai') {
+            $docs->date_end = now();
+        }
+
+        if ($status == 'ditolak') {
+            $docs->date_start = null;
+            $docs->date_end = null;
+        }
         $docs->save();
 
         return redirect()->route('admin.detail-intern', $docs->slug)->with('success', 'Status peserta berhasil diperbarui.');
@@ -59,15 +71,15 @@ class AdminInternController extends Controller
             ->firstOrFail();
 
         $path = '';
-        if($docs->application_letter == $file){
+        if ($docs->application_letter == $file) {
             $path = $docs->application_letter;
-        }elseif($docs->cv == $file){
+        } elseif ($docs->cv == $file) {
             $path = $docs->cv;
-        }elseif($docs->transcript == $file){
+        } elseif ($docs->transcript == $file) {
             $path = $docs->transcript;
         }
-        
-        
+
+
 
         if (!Storage::disk('public')->exists($path)) {
             return redirect()->back()->with('error', 'File Belum Diunggah');

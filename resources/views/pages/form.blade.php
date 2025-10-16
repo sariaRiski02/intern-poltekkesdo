@@ -20,10 +20,10 @@
                 </svg>
             </div>
             <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent mb-4 leading-tight">
-            Form Pendaftaran Magang
+            Form Pendaftaran Program
             </h1>
             <p class="text-slate-600 text-xl max-w-2xl mx-auto leading-relaxed">
-            Bergabunglah dengan program magang profesional di Poltekkes Manado dan kembangkan karir Anda
+            Bergabunglah dengan program profesional di Poltekkes Manado dan kembangkan karir Anda
             </p>
         </div>
 
@@ -159,44 +159,45 @@
                 </div>
             </div>
 
-            <!-- Internship Period Section -->
-            <div class="space-y-6">
-                <h2 class="text-2xl font-bold text-slate-800 border-b border-emerald-100 pb-3">
-                <span class="inline-flex items-center gap-2">
-                    <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 0V5a2 2 0 012-2h4a2 2 0 012 2v2M8 7h8M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                    </svg>
-                    Periode Magang
-                </span>
-                </h2>
+            <!-- Program Period Section -->
+            @if($is_periode)
+                <div class="space-y-6">
+                    <h2 class="text-2xl font-bold text-slate-800 border-b border-emerald-100 pb-3">
+                    <span class="inline-flex items-center gap-2">
+                        <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 0V5a2 2 0 012-2h4a2 2 0 012 2v2M8 7h8M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        Periode Magang
+                    </span>
+                    </h2>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Tanggal Mulai -->
-                <div>
-                    <label for="tanggal_mulai" class="block text-sm font-medium text-slate-700 mb-2">
-                    Tanggal Mulai <span class="text-red-500">*</span>
-                    </label>
-                    <input value="{{ old('tanggal_mulai') }}" type="date" id="tanggal_mulai" name="tanggal_mulai" required
-                        class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 bg-white/50 backdrop-blur-sm">
-                        @error('tanggal_mulai')
-                            <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
-                        @enderror
-                </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Tanggal Mulai -->
+                    <div>
+                        <label for="tanggal_mulai" class="block text-sm font-medium text-slate-700 mb-2">
+                        Tanggal Mulai <span class="text-red-500">*</span>
+                        </label>
+                        <input value="{{ old('tanggal_mulai') }}" type="date" id="tanggal_mulai" name="tanggal_mulai" required
+                            class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 bg-white/50 backdrop-blur-sm">
+                            @error('tanggal_mulai')
+                                <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                            @enderror
+                    </div>
 
-                <!-- Tanggal Selesai -->
-                <div>
-                    <label for="tanggal_selesai" class="block text-sm font-medium text-slate-700 mb-2">
-                    Tanggal Selesai <span class="text-red-500">*</span>
-                    </label>
-                    <input value="{{ old('tanggal_selesai') }}" type="date" id="tanggal_selesai" name="tanggal_selesai" required
-                        class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 bg-white/50 backdrop-blur-sm">
-                        @error('tanggal_selesai')
-                            <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
-                        @enderror
+                    <!-- Tanggal Selesai -->
+                    <div>
+                        <label for="tanggal_selesai" class="block text-sm font-medium text-slate-700 mb-2">
+                        Tanggal Selesai <span class="text-red-500">*</span>
+                        </label>
+                        <input value="{{ old('tanggal_selesai') }}" type="date" id="tanggal_selesai" name="tanggal_selesai" required
+                            class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 bg-white/50 backdrop-blur-sm">
+                            @error('tanggal_selesai')
+                                <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                            @enderror
+                    </div>
+                    </div>
                 </div>
-                </div>
-            </div>
-
+            @endif
             <!-- Documents Section -->
             <div class="space-y-6">
                 <h2 class="text-2xl font-bold text-slate-800 border-b border-emerald-100 pb-3">
@@ -210,32 +211,33 @@
 
                 <!-- Surat Pengajuan dari Kampus -->
                 <div>
-                <label for="surat_pengajuan" class="block text-sm font-medium text-slate-700 mb-2">
-                    Surat Pengajuan dari Kampus <span class="text-red-500">*</span>
-                </label>
-                <div class="relative">
-                    <input value="{{ old('nama_lengkap') }}" type="file" id="surat_pengajuan" name="surat_pengajuan" accept=".pdf,.doc,.docx" required
-                        class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 bg-white/50 backdrop-blur-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100">
-                    @error('surat_pengajuan')
-                        <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
-                    @enderror
+                    <label for="surat_pengajuan" class="block text-sm font-medium text-slate-700 mb-2">
+                        Surat Pengajuan  <span class="text-red-500">*</span>
+                    </label>
+                    <div class="relative">
+                        <input value="{{ old('nama_lengkap') }}" type="file" id="surat_pengajuan" name="surat_pengajuan" accept=".pdf,.doc,.docx" required
+                            class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 bg-white/50 backdrop-blur-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100">
+                        @error('surat_pengajuan')
+                            <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">Format: PDF, (Maksimal 5MB)</p>
                 </div>
-                <p class="text-xs text-slate-500 mt-2">Format: PDF, (Maksimal 5MB)</p>
-                </div>
+
 
                 <!-- CV (Optional) -->
                 <div>
-                <label for="cv" class="block text-sm font-medium text-slate-700 mb-2">
-                    Curriculum Vitae (CV) <span class="text-slate-400">(Opsional)</span>
-                </label>
-                <div class="relative">
-                    <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx"
-                        class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 bg-white/50 backdrop-blur-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-                    @error('cv')
-                        <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
-                <p class="text-xs text-slate-500 mt-2">Format: PDF (Maksimal 5MB)</p>
+                    <label for="cv" class="block text-sm font-medium text-slate-700 mb-2">
+                        Curriculum Vitae (CV) <span class="text-slate-400">(Opsional)</span>
+                    </label>
+                    <div class="relative">
+                        <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx"
+                            class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 bg-white/50 backdrop-blur-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                        @error('cv')
+                            <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">Format: PDF (Maksimal 5MB)</p>
                 </div>
 
                 <!-- Transkrip (Optional) -->

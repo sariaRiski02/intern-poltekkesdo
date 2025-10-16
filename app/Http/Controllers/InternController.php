@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 
+use Carbon\Carbon;
 use App\Models\docs;
 use App\Models\User;
 use App\Models\intern;
+use App\Models\visitor;
 use App\Models\activity;
 use App\Models\department;
-use App\Models\visitor;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -20,20 +21,23 @@ class InternController extends Controller
     public function index(department $department)
     {
 
-        
+
         if (Auth::check() && $department->intern->first()?->user?->id == Auth::id()) {
             return redirect()->route('home');
         }
 
+        $is_periode = $department->is_periode;
         // Set locale to Indonesian
         App::setLocale('id');
-        return view('pages.form', compact('department'));
+        return view('pages.form', compact('department', 'is_periode'));
     }
 
     public function internStore(Request $request, department $department)
     {
         // Set locale to Indonesian for validation messages
         App::setLocale('id');
+
+
 
         $validatedData = $request->validate([
             'nama_lengkap' => 'required|string|max:255',
@@ -49,12 +53,12 @@ class InternController extends Controller
             'fakultas' => 'required|string|max:255',
             'jurusan' => 'required|string|max:255',
             'tanggal_mulai' => [
-                'required',
+                'nullable',
                 'date',
                 'after_or_equal:today'
             ],
             'tanggal_selesai' => [
-                'required',
+                'nullable',
                 'date',
                 'after:tanggal_mulai'
             ],
@@ -93,8 +97,8 @@ class InternController extends Controller
         $docs->slug = Str::slug($validatedData['nama_lengkap'] . '-' . Str::random(5));
         $docs->status = 'pending';
         $docs->department_id = $department->id;
-        $docs->date_start = $validatedData['tanggal_mulai'];
-        $docs->date_end = $validatedData['tanggal_selesai'];
+        $docs->date_start = $validatedData['tanggal_mulai'] ?? null;
+        $docs->date_end = $validatedData['tanggal_selesai'] ?? null;
 
         // simpan surat pengajuan
         if ($request->hasFile('surat_pengajuan')) {
@@ -140,11 +144,11 @@ class InternController extends Controller
         $user = User::where('id', Auth::id())->first()->intern()->get();
         $docs = false;
 
-        if(is_null($user) || $user->isEmpty()){
+        if (is_null($user) || $user->isEmpty()) {
             return view('pages.announcement', compact('docs'));
         }
         $docs = $user->flatMap->docs;
-        $docs = $docs->filter(function($doc){
+        $docs = $docs->filter(function ($doc) {
             return $doc->department && $doc->department->is_active;
         });
         return view('pages.announcement', compact('docs'));

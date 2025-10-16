@@ -91,12 +91,14 @@ class AdminDepartmentController extends Controller
 
     public function add_department_process(Request $request)
     {
-        // dd('test');
+
+
         $request->validate([
             'name' => 'required|string|max:255',
             'head_desc' => 'required|string|max:255',
             'requirements' => 'nullable|string',
             'desc' => 'required|string',
+            'is_periode' => 'required|boolean',
         ]);
 
         $slug = Str::slug($request->name) . "-" . Str::uuid();
@@ -105,8 +107,10 @@ class AdminDepartmentController extends Controller
             'slug' => $slug,
             'head_desc' => $request->head_desc,
             'desc' => $request->desc,
+            'is_periode' => $request->is_periode,
             'admin_id' => Auth::user()->admin->id ?? null,
         ]);
+
 
         // add requirements
         $requirements = explode(',', $request->requirements);

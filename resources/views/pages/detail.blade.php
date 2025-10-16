@@ -28,7 +28,7 @@
               <svg class="w-6 h-6 text-slate-400" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd"></path>
               </svg>
-              <span class="text-sm font-medium text-slate-500 ml-1 md:ml-2">Detail Lowongan</span>
+              <span class="text-sm font-medium text-slate-500 ml-1 md:ml-2">Detail Program</span>
             </div>
           </li>
         </ol>

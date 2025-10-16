@@ -39,6 +39,9 @@
 
         <div class="border-t border-slate-700 pt-8 text-center">
            <p class="text-slate-400">&copy; Created by the IT Unit of Poltekkes Kemenkes Manado</p>
+            <p class="text-slate-500 text-sm mt-2">
+                Version 1.9.0
+            </p>
         </div>
       </div>
     </footer>

@@ -25,7 +25,7 @@
     <!-- Departments Table -->
     <div class="bg-white rounded-2xl shadow border border-gray-100 overflow-hidden">
         <div class="px-6 py-4 border-b border-gray-100 bg-gray-50">
-            <h3 class="text-lg font-semibold text-gray-900">Daftar Unit</h3>
+            <h3 class="text-lg font-semibold text-gray-900">Daftar Program</h3>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full text-sm">

@@ -48,4 +48,6 @@ Route::middleware([AdminMiddleware::class])->prefix('admin')->group(function () 
 
     Route::get('/profil', [AdminController::class, 'profile'])->name('admin.profile');
     Route::put('/profil', [AdminProfilController::class, 'update_profile'])->name('admin.profile-store');
+
+    Route::post('/certificate/{docs:slug}', [AdminController::class, 'sertifikat'])->name('admin.sertifikat');
 });
