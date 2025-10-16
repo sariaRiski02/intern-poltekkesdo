@@ -14,12 +14,12 @@
 
             <!-- Title -->
             <h2 class="text-2xl md:text-3xl font-bold text-slate-700 mb-4">
-              Belum Ada Pembukaan Magang
+              Belum Ada Pembukaan Program Baru
             </h2>
 
             <!-- Description -->
             <p class="text-slate-600 text-lg mb-8 max-w-2xl mx-auto">
-              Saat ini belum ada pembukaan program magang tersedia. Kami akan mengumumkan pembukaan pendaftaran magang terbaru melalui website ini dan media sosial resmi.
+              Saat ini belum ada pembukaan program baru tersedia. Kami akan mengumumkan pembukaan pendaftaran program terbaru melalui website ini dan media sosial resmi.
             </p>
 
             <!-- Status Badge -->

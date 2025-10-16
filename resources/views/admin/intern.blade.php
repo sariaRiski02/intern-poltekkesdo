@@ -57,7 +57,7 @@
                         <th class="px-6 py-3 text-left">No</th>
                         <th class="px-6 py-3 text-left">Peserta</th>
                         <th class="px-6 py-3 text-left">Universitas</th>
-                        <th class="px-6 py-3 text-left">Unit</th>
+                        <th class="px-6 py-3 text-left">Program</th>
                         <th class="px-6 py-3 text-left">Status</th>
                         <th class="px-6 py-3 text-left">Detail</th>
                     </tr>

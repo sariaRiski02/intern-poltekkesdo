@@ -34,7 +34,7 @@
                 </button>
                 <div>
                     <h1 class="text-2xl font-bold text-slate-800">Dashboard</h1>
-                    <p class="text-sm text-slate-500">Welcome to admin panel</p>
+                    <p class="text-sm text-slate-500">Selamat Datang di panel admin</p>
                 </div>
             </div>
 

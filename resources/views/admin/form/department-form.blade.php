@@ -21,10 +21,10 @@
                     </svg>
                 </div>
                 <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent mb-4 leading-tight">
-                    Form Unit
+                    Form Program
                 </h1>
                 <p class="text-slate-600 text-xl max-w-2xl mx-auto leading-relaxed">
-                    Buat atau perbarui data unit beserta admin penanggung jawab.
+                    Buat atau perbarui data program beserta admin penanggung jawab.
                 </p>
             </div>
 
@@ -54,7 +54,7 @@
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                                         </svg>
                                     </div>
-                                    Informasi Department
+                                    Informasi Program
                                 </span>
                             </h2>
                         </div>
@@ -62,7 +62,7 @@
                         <!-- Nama -->
                         <div>
                             <label for="name" class="block text-sm font-medium text-slate-700 mb-2">
-                                Nama Unit <span class="text-red-500">*</span>
+                                Nama Program <span class="text-red-500">*</span>
                             </label>
                             <div class="relative group">
                                 <input type="text" id="name" name="name" value="{{ $department->name ?? '' }}" required
@@ -79,7 +79,7 @@
                                 Deskripsi Singkat
                             </label>
                             <input type="text" id="head_desc" value="{{ $department->head_desc ?? '' }}" name="head_desc"
-                                         placeholder="Contoh: Dr. Andi Setiawan, M.Kom"
+                                         placeholder="Deskripsi Singkat"
                                          class="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-400 transition-all duration-300 bg-white/70 backdrop-blur-sm hover:bg-white/90 hover:shadow-md placeholder-slate-400">
                         </div>
 
@@ -103,7 +103,7 @@
                                 Deskripsi
                             </label>
                             <textarea id="desc" name="desc" rows="4"
-                                                placeholder="Tuliskan deskripsi singkat mengenai department..."
+                                                placeholder="Tuliskan deskripsi singkat mengenai program..."
                                                 class="w-full px-5 py-4 border border-slate-200 rounded-2xl focus:ring-2
                                                 focus:ring-emerald-500/50 focus:border-emerald-400 transition-all duration-300
                                                 bg-white/70 backdrop-blur-sm hover:bg-white/90 hover:shadow-md

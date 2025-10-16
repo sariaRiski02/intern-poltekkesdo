@@ -115,7 +115,7 @@
                     </svg>
                     Daftar Sekarang
                 </a>
-                <p class="text-slate-500 text-sm mt-4">Klik untuk mengisi formulir pendaftaran magang</p>
+                <p class="text-slate-500 text-sm mt-4">Klik untuk mengisi formulir pendaftaran</p>
             </div>
         @else
             <div class="text-center" data-aos="fade-up" data-aos-delay="400">
@@ -130,7 +130,7 @@
                     </svg>
                     Unit ini sudah didaftarkan
                 </div>
-                <p class="text-slate-500 text-sm mt-4">Anda sudah terdaftar di unit ini</p>
+                <p class="text-slate-500 text-sm mt-4">Anda sudah terdaftar di Program ini</p>
             </div>
 
         @endif
