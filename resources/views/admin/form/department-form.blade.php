@@ -128,7 +128,7 @@
                                 <div class="relative">
                                     <!-- Hidden Checkbox -->
                                     <input id="toggle" type="checkbox" class="sr-only peer" aria-describedby="toggle-status" />
-                                    <input type="hidden" name="is_periode" id="is_periode" value="0">
+                                    <input type="hidden" name="is_periode" id="is_periode" value="{{$department->is_periode ?? 0}}">
                                     <!-- Track -->
                                     <div
                                         class="w-16 h-9 bg-slate-200 rounded-full shadow-inner
@@ -187,6 +187,24 @@
                     statusText.classList.add('text-emerald-600');
                     statusText.classList.remove('text-slate-900');
                 } else {
+                    document.getElementById('is_periode').value = '0';
+                    statusText.textContent = 'Mati';
+                    statusText.classList.add('text-slate-900');
+                    statusText.classList.remove('text-emerald-600');
+                }
+            });
+
+            // Inisialisasi status berdasarkan data lama (jika ada)
+            window.addEventListener('DOMContentLoaded', () => {
+                const isPeriode = "{{ old('is_periode', $department->is_periode ?? 0) }}";
+                if (isPeriode == '1') {
+                    toggle.checked = true;
+                    document.getElementById('is_periode').value = '1';
+                    statusText.textContent = 'Aktif';
+                    statusText.classList.add('text-emerald-600');
+                    statusText.classList.remove('text-slate-900');
+                } else {
+                    toggle.checked = false;
                     document.getElementById('is_periode').value = '0';
                     statusText.textContent = 'Mati';
                     statusText.classList.add('text-slate-900');

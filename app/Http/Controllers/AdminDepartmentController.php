@@ -36,6 +36,7 @@ class AdminDepartmentController extends Controller
             'name' => 'required|string|max:255',
             'head_desc' => 'required|string|max:255',
             'requirements' => 'nullable|string',
+            'is_periode' => 'required|boolean',
             'desc' => 'required|string',
         ]);
 
@@ -44,6 +45,7 @@ class AdminDepartmentController extends Controller
             'name' => $request->name,
             'head_desc' => $request->head_desc,
             'desc' => $request->desc,
+            'is_periode' => $request->is_periode,
         ]);
 
         // update requirements

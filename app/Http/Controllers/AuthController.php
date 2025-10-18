@@ -120,6 +120,7 @@ class AuthController extends Controller
 
     public function register_admin_process(Request $request)
     {
+        
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|unique:users,email',
